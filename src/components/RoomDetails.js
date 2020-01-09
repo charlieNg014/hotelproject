@@ -3,15 +3,14 @@ import {ProjectConsumer} from '../context';
 import StyledImage from './StyleImage';
 import Banner from './Banner';
 import {Link} from 'react-router-dom';
+import DatePicker from 'react-datepicker';
+import "react-datepicker/dist/react-datepicker.css";
 
 export default function RoomDetails({context}) {
     return(
         <ProjectConsumer>
             {value => {
-                const {detailRooms} = value;
-                console.log(detailRooms);
-                console.log(detailRooms.name);
-                
+                const {detailRooms, handleCheckinDateChange, handleCheckoutDateChange, checkinDate, checkoutDate, onSubmit} = value;
                 
                 return(
                     <>
@@ -32,20 +31,51 @@ export default function RoomDetails({context}) {
                             })}
                         </div>
 
-                        <div className="single-room-info">
-                            {/* description */}
-                            <article className="desc">
-                                <h3>{detailRooms.description}</h3> 
-                            </article>
-                            {/* details */}
-                            <article className="info">
-                                <h3>Infomation</h3>
-                                <h6>Price: AUD ${detailRooms.price}</h6>
-                                <h6>Size: {detailRooms.size}m2</h6>
-                                <h6>Guest: {detailRooms.capacity > 1 ? `${detailRooms.capacity} people`: `${detailRooms.capacity} person`}</h6>
-                                <h6>{detailRooms.pets? "pets allowed": "no pets allowed"}</h6>
-                                <h6>{detailRooms.breakfast && "free breakfast"}</h6> 
-                            </article>
+                        <div className="single-room-info row container-fluid" style={{marginLeft: 55, textAlign:"center"}}>
+                            
+                                {/* description */}
+                                <article className="desc col-md-4">
+                                    <h3>{detailRooms.description}</h3> 
+                                </article>
+                                {/* details */}
+                                <article className="info col-md-4">
+                                    <h3>Infomation</h3>
+                                    <h6>Price: AUD ${detailRooms.price}</h6>
+                                    <h6>Size: {detailRooms.size}m2</h6>
+                                    <h6>Guest: {detailRooms.capacity > 1 ? `${detailRooms.capacity} people`: `${detailRooms.capacity} person`}</h6>
+                                    <h6>{detailRooms.pets? "pets allowed": "no pets allowed"}</h6>
+                                    <h6>{detailRooms.breakfast && "free breakfast"}</h6> 
+                                </article>
+                                {/* description */}
+                                <article className="desc col-md-4">
+                                    <div>
+                                    <p style={{marginBottom: 15, fontWeight:"bold"}}>Check-in</p>
+                                        <DatePicker
+                                            selected={checkinDate}
+                                            onChange={handleCheckinDateChange}
+                                        />
+                                    </div>
+                                    <div>
+                                    <p style={{marginBottom: 15, marginTop:15, fontWeight: "bold"}}>Check-out</p>
+                                        <DatePicker
+                                            selected={checkoutDate}
+                                            onChange={handleCheckoutDateChange}
+                                        />
+                                    </div>
+                                    <div style={{marginTop: 20}}>
+                                        <Link  to="/booking/add">
+                                            <input 
+                                                type="submit"
+                                                value="Book" 
+                                                class="btn btn-primary" 
+                                                data-toggle="button" 
+                                                style={{textTransform:"uppercase"}}
+                                                onClick={onSubmit}
+                                            />
+                                        </Link>
+                                    </div>
+                                    
+                                </article>
                         </div>
                     </section>
 

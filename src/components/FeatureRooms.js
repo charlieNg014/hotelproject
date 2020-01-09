@@ -10,6 +10,9 @@ export default class FeatureRooms extends Component {
     render(){
         //import data featuredRooms
         let {featuredRooms: rooms} = this.context;
+        // console.log(rooms);
+        
+        
         rooms = rooms.map(room => {
             return(
                 <ProjectDisplay key={room.id} room={room} />

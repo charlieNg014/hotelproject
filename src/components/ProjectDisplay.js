@@ -6,13 +6,14 @@ import {ProjectContext} from '../context';
 
 export default function ProjectDisplay({room}) {
     //declare items
+    
     const {name, images, price, slug} = room;
     const context = useContext(ProjectContext);
     const {getRoomId} = context;
         return(
             <article className="room">
                 <div className="img-container">
-                    <img src={images[0]}/>
+                    <img src={images[0]} alt="displayimage"/>
                     <div className="price-top">
                         ${price} 
                         <p>per night</p>

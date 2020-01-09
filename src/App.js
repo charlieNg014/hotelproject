@@ -8,6 +8,8 @@ import Navbar from "./components/Navbar";
 import Home from './Pages/Home';
 import Rooms from './Pages/Rooms';
 import RoomDetails from './components/RoomDetails';
+import BookingDetails from './components/BookingDetails';
+
 
 function App() {
   return (
@@ -17,6 +19,7 @@ function App() {
       <Route exact path="/" component={Home} />
       <Route exact path="/rooms" component={Rooms} />
       <Route exact path="/rooms/:slug" component={RoomDetails} />
+      <Route exact path="/booking/add" component={BookingDetails} />
     </Switch>
     </>
   )

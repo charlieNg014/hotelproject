@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import items from "./data";
+import BookingDate from "./components/BookingDate";
 
 //create context
 const ProjectContext = React.createContext();
@@ -11,6 +12,7 @@ class ProjectProvider extends Component{
         sortedRooms: [],
         featuredRooms: [],
         detailRooms: [],
+        bookingDate: [],
         slug: true,
         loading: true,
         type: "all",
@@ -21,7 +23,10 @@ class ProjectProvider extends Component{
         minSize: 0,
         maxSize: 0, 
         breakfast: false,
-        pets: false
+        pets: false,
+        checkinDate: new Date(),
+        checkoutDate: new Date(),
+        bDate: []
     }
 
 
@@ -45,6 +50,42 @@ class ProjectProvider extends Component{
             maxSize,
             maxPrice
         }) 
+
+        // console.log(featuredRooms);
+        
+    }
+
+    handleCheckinDateChange = date => {
+        this.setState({
+            checkinDate: date
+        })
+        const checkinDate = date;
+        return checkinDate;
+    };
+
+    handleCheckoutDateChange = date => {
+        this.setState({
+          checkoutDate: date
+        });
+        const checkoutDate = date;
+      };
+
+    onSubmit = (checkinDate, checkoutDate) => {
+        const testArray = this.state.bDate.concat(this.state.checkinDate, this.state.checkoutDate);
+        const date = testArray[0].getDate();
+        const month = testArray[0].getMonth() + 1;
+        const year = testArray[0].getFullYear();
+        // console.log(date);
+        // console.log(month);
+        // console.log(year);
+        // console.log(testArray);
+        const test = [];
+
+        this.setState({
+            test: testArray
+        })
+
+        return test;
     }
 
     getRoom = slug => {
@@ -135,7 +176,14 @@ class ProjectProvider extends Component{
 
     render(){
         return(
-            <ProjectContext.Provider value ={{...this.state, getRoom: this.getRoom, handleChange: this.handleChange, getRoomId:this.getRoomId}}>
+            <ProjectContext.Provider value ={{...this.state, 
+                getRoom: this.getRoom, 
+                handleChange: this.handleChange, 
+                getRoomId:this.getRoomId, 
+                handleCheckinDateChange: this.handleCheckinDateChange,
+                handleCheckoutDateChange: this.handleCheckoutDateChange,
+                onSubmit: this.onSubmit
+                }}>
                 {this.props.children}
             </ProjectContext.Provider>
         )
