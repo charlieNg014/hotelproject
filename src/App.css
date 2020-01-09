@@ -600,14 +600,14 @@ hr {
 
 /* css for booking  */
 .reserve-title {
-  margin-top: -30px;
   text-transform: uppercase;
   text-align: center;
   font-weight: bold;
+  margin-top: 40px;
 }
 
 .checkdate {
-  margin-top: 60px;
+  margin-top: 20px;
   text-transform: uppercase;
   width: 300px;
   text-align: center;
@@ -616,9 +616,26 @@ hr {
 .book-title {
   text-transform: uppercase;
   font-size: 25px;
-  margin-top: 30px;
+  margin-top: 10px;
 }
 
 .checkbox {
   margin-right: 10px;
+}
+
+.date-text {
+  margin-top:10px; 
+  font-size: 50px;
+  color: white;
+  font-style: italic;
+}
+
+.month-text {
+  font-style: italic;
+  font-size: 15px;
+  color: whitesmoke;
+}
+.price {
+  margin-top: -20px;
+  margin-left: -35px;
 }

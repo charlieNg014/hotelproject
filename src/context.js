@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import items from "./data";
-import BookingDate from "./components/BookingDate";
 
 //create context
 const ProjectContext = React.createContext();
@@ -25,8 +24,8 @@ class ProjectProvider extends Component{
         breakfast: false,
         pets: false,
         checkinDate: new Date(),
-        checkoutDate: new Date(),
-        bDate: []
+        checkoutDate: (new Date()),
+        testArray:["1", "2"]
     }
 
 
@@ -37,6 +36,7 @@ class ProjectProvider extends Component{
         let featuredRooms = rooms.filter(room => room.featured === true);
         let maxPrice = Math.max(...rooms.map(item => item.price));
         let maxSize = Math.max(...rooms.map(item => item.size));
+        let testArray = ["1","2"];
         //set the new state
         this.setState({
             rooms,
@@ -48,11 +48,11 @@ class ProjectProvider extends Component{
             price: maxPrice,
             size: maxSize,
             maxSize,
-            maxPrice
+            maxPrice,
+            testArray
         }) 
 
-        // console.log(featuredRooms);
-        
+        console.log(testArray);
     }
 
     handleCheckinDateChange = date => {
@@ -68,22 +68,15 @@ class ProjectProvider extends Component{
           checkoutDate: date
         });
         const checkoutDate = date;
+        return checkoutDate;
       };
 
     onSubmit = (checkinDate, checkoutDate) => {
-        const testArray = this.state.bDate.concat(this.state.checkinDate, this.state.checkoutDate);
-        const date = testArray[0].getDate();
-        const month = testArray[0].getMonth() + 1;
-        const year = testArray[0].getFullYear();
-        // console.log(date);
-        // console.log(month);
-        // console.log(year);
-        // console.log(testArray);
-        const test = [];
-
-        this.setState({
-            test: testArray
-        })
+        const test = this.state.testArray.splice(0,2,this.state.checkinDate.toString(),this.state.checkoutDate.toString());        
+   
+        // this.setState({
+        //     test: test
+        // })
 
         return test;
     }

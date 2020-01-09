@@ -8,12 +8,13 @@ import StyleImage from './StyleImage';
 
 export default function BookingDate({booking}) {
     //declare items
-    const context = useContext(ProjectContext);     
     console.log(booking);
+    const date = booking.substring(4, 15);
+    console.log(date);
     
     
-   
     
+    const context = useContext(ProjectContext);     
         return(
             <article>
                 <StyleImage>
@@ -21,7 +22,8 @@ export default function BookingDate({booking}) {
                         <div className="form-group reserve-title">Your reservation</div>
                         <div className="row checkdate">
                             <div className="col-md-6">
-                                checkin
+                                checkin 
+                                <h6>{date}</h6>
                             </div>
                             <div className="col-md-6">
                                 checkout

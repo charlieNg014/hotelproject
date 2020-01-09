@@ -4,8 +4,6 @@ import StyleImage from "./StyleImage";
 import Banner from "./Banner";
 import { Link } from 'react-router-dom';
 import {ProjectContext} from "../context";
-import BookingDate from "./BookingDate";
-import ProjectDisplay from './ProjectDisplay';
 
 export default class BookingDetails extends Component {
 
@@ -46,7 +44,7 @@ export default class BookingDetails extends Component {
             city: "",
             postcode: "",
             request: "",
-            arrival: "",
+            arrival: "I do not know",
             coupon: "",
             car: "off",
             seaview: "off",
@@ -58,16 +56,20 @@ export default class BookingDetails extends Component {
     //
     componentDidMount() {
         //getting all users and then display
-        axios.get("http://localhost:5000/findroom/2")
-        .then(response => {
-            if (response.data.length > 0) {
-                this.setState({
-                    checkinDate: response.data[0].checkin,
-                    checkoutDate: response.data[0].checkout,
-                    roomname: response.data[0].roomName
-                })
-            }
-        })
+        // axios.get("http://localhost:5000/findroom/2")
+        // .then(response => {
+        //     if (response.data.length > 0) {
+        //         this.setState({
+        //             checkinDate: response.data[0].checkin,
+        //             checkoutDate: response.data[0].checkout,
+        //             roomname: response.data[0].roomName
+        //         })
+        //     }
+        // })
+
+        //set values to the room, checkin and checkout date
+        console.log(this.state.checkinDate);
+        
     }
 
 
@@ -174,6 +176,46 @@ export default class BookingDetails extends Component {
         })
     }
 
+    onChangeGetInDate(e) {
+        this.setState({
+            checkinDate: e.target.value
+        })
+    }
+
+    onChangeDay(day) {
+        if (day < 10) {
+           day = "0" + day.toString();
+        } 
+        return day;
+    }
+
+    onChangeMonth(month) {
+        const mlist = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
+        return mlist[month];
+    }
+
+    onChangeTotalDays(startDate, finishDate) {
+        const total = finishDate-startDate;           
+        if (total < 0) {
+            console.log("False");
+        } else {
+            const anotherTotal = "0" + total.toString();
+        }
+        return total;
+    }
+
+    onChangeName(name) {
+        this.state.roomname = name;
+    }
+
+    onChangeCheckinDate(date) {
+        this.state.checkinDate = date
+    }
+
+    onChangeCheckoutDate(date) {
+        this.state.checkoutDate = date;
+    }
+
     onSubmit(e) {
         e.preventDefault();
 
@@ -214,19 +256,48 @@ export default class BookingDetails extends Component {
 
     render() {
 
-        let {test: bookingDate} = this.context;
-        bookingDate = bookingDate.map(item => {
-            return(
-               console.log(item)
+        let {checkinDate: inDate, checkoutDate: outDate, detailRooms: details} = this.context;
+        this.onChangeName(details.name);
+        this.onChangeCheckinDate(inDate);
+        this.onChangeCheckoutDate(outDate);
+        
+
+        //get details of checkin day
+        const getInDay = inDate.getDate();
+        const checkinDay = this.onChangeDay(getInDay);
+        const getInMonth = inDate.getMonth() +1;
+        const checkinMonth = this.onChangeMonth(getInMonth)
+        const checkinYear = inDate.getFullYear();
+
+        //get details of checkout day
+        const getOutDay = outDate.getDate();
+        const checkoutDay = this.onChangeDay(getOutDay)
+        const getOutMonth = inDate.getMonth() +1;
+        const checkoutMonth = this.onChangeMonth(getOutMonth)
+        const checkoutYear = outDate.getFullYear();
+
+        //get the total days
+        // console.log(checkinDay);
+        // console.log(checkoutDay);
+    
+        //getting total days of stay 
+        const totalDays = this.onChangeTotalDays(checkinDay, checkoutDay);
+
+        //set the value for arrival
+        const arrival = ["I do not know", "12:00 - 1:00 am", "1:00 - 2:00 am", "2:00 - 3:00 am", "3:00 - 4:00 am", "4:00 - 5:00 am", "5:00 - 6:00 am", "6:00 - 7:00 am", "7:00 - 8:00 am", "8:00 - 9:00 am", "9:00 - 10:00 am", "10:00 - 11:00 am", "11:00 - 12:00 am",
+        "12:00 - 1:00 pm", "1:00 - 2:00 pm", "2:00 - 3:00 pm", "3:00 - 4:00 pm", "4:00 - 5:00 pm", "5:00 - 6:00 pm", "6:00 - 7:00 pm", "7:00 - 8:00 pm", "8:00 - 9:00 pm", "9:00 - 10:00 pm", "10:00 - 11:00 pm", "11:00 - 12:00 pm"];
+        const testArrival = arrival.map(item => {
+            return (
+                <option value={item} >{item}</option>   
             )
         })
         
-
+    
         return (
             <div>
             <div>
                 <StyleImage>
-                    <Banner title="Booking" subtitle="Finish your booking">
+                    <Banner title="Booking" subtitle={details.name}>
                         <Link to="/rooms" className="btn-primary">
                             Back to rooms
                         </Link>
@@ -237,7 +308,34 @@ export default class BookingDetails extends Component {
                 <div className="container container-fluid" style={{marginTop:20, height: 1100}}>
                     <div className="row" style={{height: 1000}}>
                         <div className="col-md-4">
-                            <BookingDate />
+                            {/* {bookingDate} */}
+                            <StyleImage img = {details.images[1]}>
+                                <div className="form-group">
+                                    <div className="form-group reserve-title">Your reservation</div>
+                                    <div className="row checkdate">
+                                        <div className="col-md-6">
+                                            <p style={{color: "whitesmoke"}}>Check-in</p> 
+                                            <h6 className="date-text" onChange={this.onChangeGetInDate}>{checkinDay}</h6>
+                                            <p className="month-text">{checkinMonth}, {checkinYear}</p>
+                                        </div>
+                                        <div className="col-md-6">
+                                            <p style={{color: "whitesmoke"}}>Check-out</p>
+                                            <h6 className="date-text">{checkoutDay}</h6>
+                                            <p className="month-text">{checkoutMonth},{checkoutYear}</p>
+                                        </div>
+                                    </div>
+                                    <div className="row checkdate" style={{marginTop:0, color:"whitesmoke"}}>
+                                        <div className="col-md-6"  >
+                                            Guest
+                                            <p>{details.capacity}</p>
+                                        </div>
+                                        <div className="col-md-6" >
+                                            Nights
+                                            <p>{totalDays}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </StyleImage>
                         </div>
 
                         <div className="col-md-8">
@@ -347,7 +445,14 @@ export default class BookingDetails extends Component {
 
                                     <div className="form-group">
                                         <label htmlfor="exampleInputEmail1">Arrival</label>
-                                        <input type="text" className="form-control" placeholder="I do not know" onChange={this.onChangeArrival}/>    
+                                        <select 
+                                            name="arrival" 
+                                            id="arrival"  
+                                            className="form-control" 
+                                            onChange={this.onChangeArrival}
+                                            > 
+                                            {testArrival}                
+                                        </select>
                                     </div>
 
                                     <div className="form-group">
