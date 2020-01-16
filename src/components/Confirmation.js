@@ -40,7 +40,7 @@ export default function Confirmation({ paymentDetails }) {
    
           const night = onChangeTotalDays(finalBooking[0].checkinDate, finalBooking[0].checkoutDate); 
           return (
-            <>
+            <div style={{height: 800}}>
             <StyleImage>
               <Banner
                 title="Thank you, your booking is completed"
@@ -48,7 +48,7 @@ export default function Confirmation({ paymentDetails }) {
               ></Banner>
             </StyleImage>
 
-            <div className="container container-fluid summary-box">
+            <div className="container container-fluid summary-box" style={{height: 800}}>
                 <div
                   className="container container-fluid"
                   style={{ marginTop: 20, height: 1100 }}
@@ -84,6 +84,7 @@ export default function Confirmation({ paymentDetails }) {
                             </label>
                             {finalBooking[0].address}
                           </li>
+                        </ul>
                 
                           {/* Payment info  */}
                         <h4 class="scheme-g">Payment</h4>
@@ -103,7 +104,7 @@ export default function Confirmation({ paymentDetails }) {
                             <span> $</span>{Math.ceil(detailRooms.price*night*1.1)} 
                           </span>
                         </p>
-                        </ul>
+                       
                       </div>
                     </div>
                     <div className="col-md-6">
@@ -175,7 +176,7 @@ export default function Confirmation({ paymentDetails }) {
                   </div>
                 </div>
               </div>
-            </>
+            </div>
           )
         }}
       </ProjectConsumer>
