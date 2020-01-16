@@ -4,10 +4,11 @@ import StyleImage from "./StyleImage";
 import Banner from "./Banner";
 import { Link } from 'react-router-dom';
 import {ProjectContext} from "../context";
-
+import Payment from "./Payment";
 export default class BookingDetails extends Component {
 
     static contextType = ProjectContext;
+    
 
     //declare the state
     constructor(props) {
@@ -32,24 +33,25 @@ export default class BookingDetails extends Component {
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
-            firstname: "",
-            lastname: "",
-            email: "",
-            phone: "",
-            country: "",
-            checkinDate: "",
-            checkoutDate: "",
-            roomname: "",
-            address: "",
-            city: "",
-            postcode: "",
-            request: "",
+            firstname: "firstname",
+            lastname: "lastname",
+            email: "email address",
+            phone: "phone number",
+            country: "country",
+            checkinDate: "expected check-in date",
+            checkoutDate: "expected check-out date",
+            roomname: "name of room",
+            address: "your address",
+            city: "your city",
+            postcode: "your postcode",
+            request: "any special request",
             arrival: "I do not know",
-            coupon: "",
+            coupon: "any coupon",
             car: "off",
             seaview: "off",
             satellite: "off",
-            laundry: "off"
+            laundry: "off", 
+            testBooking: []
         }
     }
 
@@ -66,9 +68,6 @@ export default class BookingDetails extends Component {
         //         })
         //     }
         // })
-
-        //set values to the room, checkin and checkout date
-        console.log(this.state.checkinDate);
         
     }
 
@@ -195,13 +194,10 @@ export default class BookingDetails extends Component {
     }
 
     onChangeTotalDays(startDate, finishDate) {
-        const total = finishDate-startDate;           
-        if (total < 0) {
-            console.log("False");
-        } else {
-            const anotherTotal = "0" + total.toString();
-        }
-        return total;
+        const Difference_In_Time = finishDate.getTime() - startDate.getTime(); 
+        const Difference_In_Days = Math.ceil(Difference_In_Time / (1000 * 3600 * 24));
+        
+        return Difference_In_Days;
     }
 
     onChangeName(name) {
@@ -216,8 +212,9 @@ export default class BookingDetails extends Component {
         this.state.checkoutDate = date;
     }
 
-    onSubmit(e) {
-        e.preventDefault();
+
+    onSubmit() {
+        // e.preventDefault();
 
         const booking = {
             firstname: this.state.firstname,
@@ -241,27 +238,34 @@ export default class BookingDetails extends Component {
             list: this.state.list
             
         }
+    
+        // console.log(booking);
+        
+        // axios.post("http://localhost:5000/booking/add", booking)
+        //     .then(response => console.log(response.data))
+        
+        return booking;
+    }
+
+    lastSubmit(booking) {
+        // booking.preventDefault();
         
         console.log(booking);
         
-        axios.post("http://localhost:5000/booking/add", booking)
-            .then(response => console.log(response.data))
+        // axios.post("http://localhost:5000/booking/add", booking)
+        //     .then(response => console.log(response.data))
 
-        // this.setState({
-        //     duration: 0,
-        //     description: " "
-        // })
-        // window.location = "/";
     }
+
 
     render() {
 
-        let {checkinDate: inDate, checkoutDate: outDate, detailRooms: details} = this.context;
+        let {checkinDate: inDate, checkoutDate: outDate, detailRooms: details, getBookingDetails: testingBooking} = this.context;
         this.onChangeName(details.name);
         this.onChangeCheckinDate(inDate);
         this.onChangeCheckoutDate(outDate);
         
-
+        
         //get details of checkin day
         const getInDay = inDate.getDate();
         const checkinDay = this.onChangeDay(getInDay);
@@ -275,13 +279,14 @@ export default class BookingDetails extends Component {
         const getOutMonth = inDate.getMonth() +1;
         const checkoutMonth = this.onChangeMonth(getOutMonth)
         const checkoutYear = outDate.getFullYear();
-
-        //get the total days
-        // console.log(checkinDay);
-        // console.log(checkoutDay);
-    
+        
+        //getting the booking and then pass it back to context
+        testingBooking(this.onSubmit());
+        
+        
         //getting total days of stay 
-        const totalDays = this.onChangeTotalDays(checkinDay, checkoutDay);
+        const totalDays = this.onChangeTotalDays(inDate, outDate);
+        console.log(totalDays);
 
         //set the value for arrival
         const arrival = ["I do not know", "12:00 - 1:00 am", "1:00 - 2:00 am", "2:00 - 3:00 am", "3:00 - 4:00 am", "4:00 - 5:00 am", "5:00 - 6:00 am", "6:00 - 7:00 am", "7:00 - 8:00 am", "8:00 - 9:00 am", "9:00 - 10:00 am", "10:00 - 11:00 am", "11:00 - 12:00 am",
@@ -309,33 +314,39 @@ export default class BookingDetails extends Component {
                     <div className="row" style={{height: 1000}}>
                         <div className="col-md-4">
                             {/* {bookingDate} */}
-                            <StyleImage img = {details.images[1]}>
-                                <div className="form-group">
-                                    <div className="form-group reserve-title">Your reservation</div>
-                                    <div className="row checkdate">
-                                        <div className="col-md-6">
-                                            <p style={{color: "whitesmoke"}}>Check-in</p> 
-                                            <h6 className="date-text" onChange={this.onChangeGetInDate}>{checkinDay}</h6>
-                                            <p className="month-text">{checkinMonth}, {checkinYear}</p>
+                            <div className="container-fluid left-info">
+                                <div className="left-image"> 
+                                    <StyleImage img = {details.images[0]}>
+                                    </StyleImage>
+                                </div>
+                                <div className="left-details col-md-12"> 
+                                    <div className="form-group">
+                                        <div className="form-group reserve-title">Your reservation</div>
+                                        <div className="row checkdate">
+                                            <div className="col-md-6">
+                                                <p style={{color: "black"}}>Check-in</p> 
+                                                <h6 className="date-text" onChange={this.onChangeGetInDate}>{checkinDay}</h6>
+                                                <p className="month-text">{checkinMonth}, {checkinYear}</p>
+                                            </div>
+                                            <div className="col-md-6">
+                                                <p style={{color: "black"}}>Check-out</p>
+                                                <h6 className="date-text">{checkoutDay}</h6>
+                                                <p className="month-text">{checkoutMonth}, {checkoutYear}</p>
+                                            </div>
                                         </div>
-                                        <div className="col-md-6">
-                                            <p style={{color: "whitesmoke"}}>Check-out</p>
-                                            <h6 className="date-text">{checkoutDay}</h6>
-                                            <p className="month-text">{checkoutMonth},{checkoutYear}</p>
-                                        </div>
-                                    </div>
-                                    <div className="row checkdate" style={{marginTop:0, color:"whitesmoke"}}>
-                                        <div className="col-md-6"  >
-                                            Guest
-                                            <p>{details.capacity}</p>
-                                        </div>
-                                        <div className="col-md-6" >
-                                            Nights
-                                            <p>{totalDays}</p>
+                                        <div className="row checkdate" style={{marginTop:0, color:"black"}}>
+                                            <div className="col-md-6"  >
+                                                Guest
+                                                <p className="month-text"> {(details.capacity <= 9) ? `0${details.capacity}` : `${details.capacity}`}</p>
+                                            </div>
+                                            <div className="col-md-6" >
+                                                Nights
+                                                <p className="month-text">{(totalDays <= 9) ? `0${totalDays}`: `${totalDays}`}</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </StyleImage>
+                            </div>
                         </div>
 
                         <div className="col-md-8">
@@ -388,63 +399,77 @@ export default class BookingDetails extends Component {
                             </div>
                             <div className="book-title">
                                 Add Your Informations :
-                             
-                                <div className="row" style={{textTransform:"none", marginTop: 20, fontSize:15}}>
-                                    <div className="col-md-6">
-                                        <div className="form-group">
-                                            <label htmlfor="exampleInputEmail1">First Name*</label>
-                                            <input type="text" className="form-control" onChange={this.onChangeFirstname}/>
+                                <form className="needs-validation" novalidate>
+                                    <div className="form-row">
+                                        {/* first name */}
+                                        <div className="col-md-6">
+                                            <label for="validationCustom01">First name</label>
+                                            <input type="text" className="form-control" id="validationCustom01" 
+                                               onChange={this.onChangeFirstname} required />
                                         </div>
-                                        
-                                        
-
-                                        <div className="form-group">
-                                            <label htmlfor="exampleInputEmail1">Email*</label>
-                                            <input type="text" className="form-control" onChange={this.onChangeEmail}/>
+                                        {/* last name  */}
+                                        <div className="col-md-6 mb-3">
+                                            <label for="validationCustom02">Last name</label>
+                                            <input type="text" className="form-control" id="validationCustom02"  
+                                                onChange={this.onChangeLastname} required />
+                                        </div>
+                                        {/* phone  */}
+                                        <div className="col-md-6 mb-3">
+                                            <label for="validationCustom01">Phone</label>
+                                            <input type="text" className="form-control" id="validationCustom01" 
+                                               onChange={this.onChangePhone} required />
+                                        </div>
+                                        {/* email  */}
+                                        <div className="col-md-6 mb-3">
+                                            <label for="validationCustomUsername">Email</label>
+                                        <div className="input-group">
+                                            <input type="text" className="form-control" id="validationCustomUsername" 
+                                            aria-describedby="inputGroupPrepend" onChange={this.onChangeEmail} required />
+                                            <div className="invalid-feedback">
+                                            Please choose a username.
+                                            </div>
+                                        </div>
+                                        </div>
+                                        {/* address  */}
+                                        <div className="col-md-6 mb-3">
+                                            <label for="validationCustom01">Address</label>
+                                            <input type="text" className="form-control" id="validationCustom01" 
+                                               onChange={this.onChangeAddres} required />
                                         </div>
 
-                                        <div className="form-group">
-                                            <label htmlfor="exampleInputEmail1">Address*</label>
-                                            <input type="text" className="form-control" onChange={this.onChangeAddres}/>
+                                        {/* city  */}
+                                        <div className="col-md-6 mb-3">
+                                            <label for="validationCustom01">City</label>
+                                            <input type="text" className="form-control" id="validationCustom01" 
+                                               onChange={this.onChangeCity} required />
                                         </div>
 
-                                        <div className="form-group">
-                                            <label htmlfor="exampleInputEmail1">Country*</label>
-                                            <input type="text" className="form-control" onChange={this.onChangeCountry}/>
+                                        {/* country  */}
+                                        <div className="col-md-6 mb-3">
+                                            <label for="validationCustom01">Country</label>
+                                            <input type="text" className="form-control" id="validationCustom01" 
+                                               onChange={this.onChangeCountry} required />
+                                        </div>
+
+                                        {/* postcode  */}
+                                        <div className="col-md-6 mb-3">
+                                            <label for="validationCustom01">Postcode</label>
+                                            <input type="text" className="form-control" id="validationCustom01" 
+                                               onChange={this.onChangePostcode} required />
                                         </div>
                                     </div>
-                                    <div className="col-md-6">
-                                        <div className="form-group">
-                                            <label htmlfor="exampleInputEmail1">Last Name*</label>
-                                            <input type="text" className="form-control" onChange={this.onChangeLastname}/>
-                                        </div>
-
-                                        <div className="form-group">
-                                            <label htmlfor="exampleInputEmail1">Telephone*</label>
-                                            <input type="text" className="form-control" onChange={this.onChangePhone}/>
-                                        </div>
-
-                                        <div className="form-group">
-                                            <label htmlfor="exampleInputEmail1">City*</label>
-                                            <input type="text" className="form-control" onChange={this.onChangeCity}/>
-                                        </div>
-
-                                        <div className="form-group">
-                                            <label htmlfor="exampleInputEmail1">Postcode*</label>
-                                            <input type="text" className="form-control" onChange={this.onChangePostcode}/>
-                                        </div>
+                                <div className="form-row">
+                                    {/* request */}
+                                    <div className="col-md-12 mb-3">
+                                        <label for="validationCustom01">Request</label>
+                                        <textarea type="text" className="form-control" id="validationCustom01" 
+                                        rows="6" required onChange={this.onChangeRequest}></textarea>
                                     </div>
                                 </div>
-                        
-
-                                <div style={{textTransform:"none", fontSize:15}}>
-                                    <div className="form-group">
-                                        <label htmlfor="exampleInputEmail1">Request</label>
-                                        <textarea class="form-control" rows="5" onChange={this.onChangeRequest}></textarea>
-                                    </div>
-
-                                    <div className="form-group">
-                                        <label htmlfor="exampleInputEmail1">Arrival</label>
+                                <div className="form-row">
+                                    {/* arrival  */}
+                                    <div className="col-md-6 mb-3">
+                                        <label for="validationCustom01">Arrival</label>
                                         <select 
                                             name="arrival" 
                                             id="arrival"  
@@ -454,22 +479,32 @@ export default class BookingDetails extends Component {
                                             {testArrival}                
                                         </select>
                                     </div>
-
-                                    <div className="form-group">
-                                        <label htmlfor="exampleInputEmail1">Coupon</label>
-                                        <input type="text" className="form-control" onChange={this.onChangeCoupon}/>
-                                    </div>
-
-                                    <div>
-                                        <input type="checkbox" name="terms" id="terms" className="checkbox"
-                                            // checked={breakfast}
-                                            // onChange={handleChange}
-                                        >
-                                        </input>
-                                        <label htmlhtmlfor="terms">Terms and conditions</label>
+                                    {/* coupon  */}
+                                    <div className="col-md-6 mb-3">
+                                        <label for="validationCustom01">Coupon</label>
+                                        <input type="text" className="form-control" id="validationCustom01"
+                                           onChange={this.onChangeCoupon} required />
                                     </div>
                                 </div>
-                                <input type="submit" class="btn btn-primary" data-toggle="button" style={{textTransform:"uppercase"}} onClick={this.onSubmit} />
+                                <div className="form-row">
+                                    <div className="form-group">
+                                        <div className="form-check">
+                                            <input className="form-check-input" type="checkbox" value="" id="invalidCheck" required />
+                                            <label className="form-check-label" for="invalidCheck">
+                                                Agree to terms and conditions
+                                            </label>
+                                        <div className="invalid-feedback">
+                                            You must agree before submitting.
+                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                    <div className="form-group">
+                                        <Link to="/payment">
+                                            <input value="Submit form" className="btn btn-primary btn-sm" type="submit" onChange={this.onSubmit()} onClick={this.lastSubmit(this.onSubmit())}/>
+                                        </Link>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>

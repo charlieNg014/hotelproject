@@ -13,7 +13,6 @@ export default function RoomContainer({context}){
                         <div>
                             <RoomFilter rooms = {rooms}/>
                             <RoomDisplay rooms = {sortedRooms}/>
-                            
                         </div>
                     )
                 }}
