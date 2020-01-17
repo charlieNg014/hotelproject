@@ -261,7 +261,7 @@ export default function Payment({ context }) {
                           <Link to="/confirmation">
                               <input value="Submit form" className="btn btn-primary btn-sm" type="submit" />
                           </Link>
-                          <PaypalButton />
+                          {/* <PaypalButton /> */}
                         </p>
                       </div>
                     </div>
