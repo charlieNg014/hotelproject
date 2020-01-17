@@ -4,7 +4,7 @@ import StyleImage from "./StyleImage";
 import Banner from "./Banner";
 import { Link } from 'react-router-dom';
 import {ProjectContext} from "../context";
-import Payment from "./Payment";
+
 export default class BookingDetails extends Component {
 
     static contextType = ProjectContext;

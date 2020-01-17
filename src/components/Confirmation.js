@@ -38,7 +38,7 @@ export default function Confirmation({ paymentDetails }) {
           console.log(finalBooking);
           console.log(detailRooms);
    
-          const night = onChangeTotalDays(finalBooking[0].checkinDate, finalBooking[0].checkoutDate); 
+          const night = onChangeTotalDays(finalBooking[0].checkinDate, finalBooking[0].checkoutDate);  
           return (
             <div style={{height: 800}}>
             <StyleImage>

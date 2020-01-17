@@ -1,11 +1,20 @@
 import React from 'react';
 import PaypalExpressBtn from 'react-paypal-express-checkout';
+import {ProjectContext} from "../context";
  
 export default class MyApp extends React.Component {
+    static contextType = ProjectContext;
+    
     render() {
+        let {finalBooking: finalBooking, detailRooms: detailsRooms} = this.context;
+        
+        const Difference_In_Time = finalBooking[0].checkoutDate.getTime() - finalBooking[0].checkinDate.getTime(); 
+        const night = Math.ceil(Difference_In_Time / (1000 * 3600 * 24));    
+        
         const onSuccess = (payment) => {
             // Congratulation, it came here means everything's fine!
-            		console.log("The payment was succeeded!", payment);
+                    console.log("The payment was succeeded!", payment);
+                    window.location = "/confirmation"
             		// You can bind the "payment" object's value to your state or props or whatever here, please see below for sample returned data
         }
  
@@ -23,8 +32,8 @@ export default class MyApp extends React.Component {
         }
  
         let env = 'sandbox'; // you can set here to 'production' for production
-        let currency = 'USD'; // or you can set this value from your props or state
-        let total = 1; // same as above, this is the total amount (based on currency) to be paid by using Paypal express checkout
+        let currency = 'AUD'; // or you can set this value from your props or state
+        let total = detailsRooms.price * night * 1.1; // same as above, this is the total amount (based on currency) to be paid by using Paypal express checkout
         // Document on Paypal's currency code: https://developer.paypal.com/docs/classic/api/currency_codes/
  
         const client = {
