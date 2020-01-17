@@ -7,6 +7,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { ProjectConsumer } from "../context";
+import PaypalButton from "./PaypalButton";
 
 toast.configure();
 
@@ -247,7 +248,7 @@ export default function Payment({ context }) {
                           </span>
                         </p>
                         <p class="link-c">
-                          {/* <StripeCheckout
+                          <StripeCheckout
                             stripeKey="pk_test_ivwpgGyuTBJ0DLTExykuQwmN00p6kAAxKf"
                             token={handleToken}
                             billingAddress
@@ -256,10 +257,11 @@ export default function Payment({ context }) {
                             amount={
                               detailRooms.price * night * 1.1 * 100
                             }
-                          /> */}
+                          />
                           <Link to="/confirmation">
                               <input value="Submit form" className="btn btn-primary btn-sm" type="submit" />
                           </Link>
+                          <PaypalButton />
                         </p>
                       </div>
                     </div>
