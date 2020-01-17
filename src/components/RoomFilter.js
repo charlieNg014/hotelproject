@@ -15,7 +15,7 @@ export default function RoomFilter({rooms}) {
     let guest = getUnique(rooms, 'capacity');
 
 
-    types = ["all", ...types]
+    types = ["All", ...types]
     guest = [...guest];
     
     //map to jsx
@@ -68,7 +68,7 @@ export default function RoomFilter({rooms}) {
             {/* display the price  */}
             <div className="form-group">
                 <label htmlFor='price'>Price ${price}</label>
-                <input 
+                {/* <input 
                 type='range'
                 name='price'
                 min={minPrice}
@@ -77,7 +77,18 @@ export default function RoomFilter({rooms}) {
                 value={price}
                 onChange={handleChange}
                 className="form-control" 
-                />
+                /> */}
+
+                <input 
+                style={{marginTop: 12}}
+                type="range" 
+                min={minPrice} 
+                max={maxPrice} 
+                className="slider" 
+                id="price"
+                value={price}
+                onChange={handleChange}
+                />           
             </div>
 
             {/* display the size  */}
@@ -85,10 +96,12 @@ export default function RoomFilter({rooms}) {
                 <label htmlFor='size'>Room Size</label>
                 <div className="size-inputs">
                     <input 
+                    style={{marginRight: 15}}
                     type='number'
                     name='minSize'
                     id="size"
                     value={minSize}
+                    min={0}
                     onChange={handleChange}
                     className="form-control" 
                     />
@@ -97,6 +110,7 @@ export default function RoomFilter({rooms}) {
                     name='maxSize'
                     id="size"
                     value={maxSize}
+                    max={1000}
                     onChange={handleChange}
                     className="form-control" 
                     />

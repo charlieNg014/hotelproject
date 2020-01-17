@@ -40,7 +40,9 @@ export default  class Footer extends Component {
 
         //alert the users by using toast
         toast("Thanks for your sign up. I will contact with you shortly", {
-            type: "Success"
+            type: "Success",
+            position: toast.POSITION.TOP_CENTER,
+            background: 'blue'
         });
 
         //set delay for 6 seconds before redirect

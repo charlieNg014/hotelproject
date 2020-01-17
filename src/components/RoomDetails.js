@@ -5,6 +5,7 @@ import Banner from './Banner';
 import {Link} from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
+import {addDays} from "react-datepicker";
 
 export default function RoomDetails({context}) {
     return(
@@ -53,6 +54,7 @@ export default function RoomDetails({context}) {
                                         <DatePicker
                                             selected={checkinDate}
                                             onChange={handleCheckinDateChange}
+                                            minDate={checkinDate}
                                         />
                                     </div>
                                     <div>
@@ -60,6 +62,7 @@ export default function RoomDetails({context}) {
                                         <DatePicker
                                             selected={checkoutDate}
                                             onChange={handleCheckoutDateChange}
+                                            minDate={checkoutDate}
                                         />
                                     </div>
                                     <div style={{marginTop: 20}}>
