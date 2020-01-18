@@ -38,7 +38,7 @@ export default function Payment({ context }) {
       });
 
       //set the screen to confirmation page
-      window.location = "/confirmation";
+      window.location = "/";
     } else {
       toast("Something went wrong", {
         type: "error",
@@ -115,55 +115,55 @@ export default function Payment({ context }) {
                             {finalBooking[0].lastname}
                           </li>
                           <li>
-                            <label style={{ marginRight: 90 }} for="fej">
+                            <label style={{ marginRight: 95 }} for="fej">
                               Phone
                             </label>
                             {finalBooking[0].phone}
                           </li>
                           <li>
-                            <label style={{ marginRight: 96 }} for="fej">
+                            <label style={{ marginRight: 98 }} for="fej">
                               Email
                             </label>
                             {finalBooking[0].email}
                           </li>
                           <li>
-                            <label style={{ marginRight: 79 }} for="fej">
+                            <label style={{ marginRight: 80 }} for="fej">
                               Address
                             </label>
                             {finalBooking[0].address}
                           </li>
                           <li>
-                            <label style={{ marginRight: 107 }} for="fej">
+                            <label style={{ marginRight: 110 }} for="fej">
                               City
                             </label>
                             {finalBooking[0].city}
                           </li>
                           <li>
-                            <label style={{ marginRight: 78 }} for="fej">
+                            <label style={{ marginRight: 80 }} for="fej">
                               Country
                             </label>
                             {finalBooking[0].country}
                           </li>
                           <li>
-                            <label style={{ marginRight: 71 }} for="fej">
+                            <label style={{ marginRight: 73 }} for="fej">
                               Postcode
                             </label>
                             {finalBooking[0].postcode}
                           </li>
                           <li>
-                            <label style={{ marginRight: 78 }} for="fej">
+                            <label style={{ marginRight: 79 }} for="fej">
                               Request
                             </label>
                             {finalBooking[0].request}
                           </li>
                           <li>
-                            <label style={{ marginRight: 90 }} for="fej">
+                            <label style={{ marginRight: 91 }} for="fej">
                               Arrival
                             </label>
                             {finalBooking[0].arrival}
                           </li>
                           <li>
-                            <label style={{ marginRight: 79 }} for="fej">
+                            <label style={{ marginRight: 83 }} for="fej">
                               Coupon
                             </label>
                             {finalBooking[0].coupon}
@@ -178,13 +178,13 @@ export default function Payment({ context }) {
                         <h4 class="scheme-g"> Summary </h4>
                         <ul className="list-c">
                           <li>
-                            <label style={{ marginRight: 120 }} for="fej">
+                            <label style={{ marginRight: 124 }} for="fej">
                               Room
                             </label>
                             {finalBooking[0].roomname}
                           </li>
                           <li>
-                            <label style={{ marginRight: 62 }} for="fej">
+                            <label style={{ marginRight: 57 }} for="fej">
                               Price per night
                             </label>
                             ${detailRooms.price}
@@ -229,7 +229,7 @@ export default function Payment({ context }) {
                             ${detailRooms.price * 0.1}
                           </li>
                           <li>
-                            <label style={{ marginRight: 85 }} for="fej">
+                            <label style={{ marginRight: 79 }} for="fej">
                               Grant Total
                             </label>
                             ${Math.ceil(detailRooms.price*night*1.1)} 
@@ -262,10 +262,7 @@ export default function Payment({ context }) {
                               />
                             </div>
                               <div className="col-md-6" style={{marginTop: 20, marginLeft: 45}}>
-                                <Link to="/confirmation">
-                                  <PaypalButton />
-                                </Link>
-                                  
+                                  <PaypalButton /> 
                               </div>
                               {/* <div className="col-md-6" style={{marginTop: 20, marginLeft: 45}}>
                                   <Link to ="/confirmation">

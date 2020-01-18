@@ -398,7 +398,7 @@ export default class BookingDetails extends Component {
                                 </div>
                             </div>
                             <div className="book-title">
-                                Add Your Informations :
+                                Add Your Informations:
                                 <form className="needs-validation" novalidate>
                                     <div className="form-row">
                                         {/* first name */}
