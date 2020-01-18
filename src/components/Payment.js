@@ -33,14 +33,16 @@ export default function Payment({ context }) {
     const { status } = response.data;
     if (status === "success") {
       toast("Successful. Please check your email for the details!", {
-        type: "Success"
+        type: "Success",
+        className:'foo-bar'
       });
 
       //set the screen to confirmation page
       window.location = "/confirmation";
     } else {
       toast("Something went wrong", {
-        type: "error"
+        type: "error",
+        className:"foo-bar"
       });
     }
   }

@@ -892,3 +892,9 @@ hr {
   margin-left: -70px;
 }
 
+/* toastify  */
+.foo-bar {
+  width: 80%;
+  text-align: center;
+  background-color: lightseagreen;
+}
