@@ -68,7 +68,7 @@ export default function RoomFilter({rooms}) {
             {/* display the price  */}
             <div className="form-group">
                 <label htmlFor='price'>Price ${price}</label>
-                {/* <input 
+                <input 
                 type='range'
                 name='price'
                 min={minPrice}
@@ -76,19 +76,8 @@ export default function RoomFilter({rooms}) {
                 id="price"
                 value={price}
                 onChange={handleChange}
-                className="form-control" 
-                /> */}
-
-                <input 
-                style={{marginTop: 12}}
-                type="range" 
-                min={minPrice} 
-                max={maxPrice} 
                 className="slider" 
-                id="price"
-                value={price}
-                onChange={handleChange}
-                />           
+                />
             </div>
 
             {/* display the size  */}
@@ -105,6 +94,7 @@ export default function RoomFilter({rooms}) {
                     onChange={handleChange}
                     className="form-control" 
                     />
+
                     <input 
                     type='number'
                     name='maxSize'

@@ -249,7 +249,7 @@ export default function Payment({ context }) {
                         </p>
                         <p class="link-c">
                           <div className="row">
-                            <div className="col-md-6" style={{marginRight: -60, marginLeft: 46}}> 
+                            <div className="col-md-6" style={{marginRight: 25, marginLeft: 44, marginTop: 20}}> 
                               <StripeCheckout
                                   stripeKey="pk_test_ivwpgGyuTBJ0DLTExykuQwmN00p6kAAxKf"
                                   token={handleToken}
@@ -259,8 +259,16 @@ export default function Payment({ context }) {
                                   amount={detailRooms.price * night * 1.1 * 100}
                               />
                             </div>
-                              <div className="col-md-6" style={{marginTop: 10}}>
+                              <div className="col-md-6" style={{marginTop: 20, marginLeft: 45}}>
+                                <Link to="/confirmation">
                                   <PaypalButton />
+                                </Link>
+                                  
+                              </div>
+                              <div className="col-md-6" style={{marginTop: 20, marginLeft: 45}}>
+                                  <Link to ="/confirmation">
+                                    <input value="Submit form" className="btn btn-primary btn-sm" type="submit" />
+                                  </Link>
                               </div>
                           </div>
                       

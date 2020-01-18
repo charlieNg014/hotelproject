@@ -32,7 +32,7 @@ export default function RoomDetails({context}) {
                             })}
                         </div>
 
-                        <div className="single-room-info row container-fluid" style={{marginLeft: 55, textAlign:"center"}}>
+                        <div className="single-room-info row container-fluid" style={{marginLeft: 20, textAlign:"center"}}>
                             
                                 {/* description */}
                                 <article className="desc col-md-4">

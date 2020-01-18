@@ -519,7 +519,7 @@ hr {
   width: 25px;
   height: 25px;
   border-radius: 50%;
-  background: #4CAF50;
+  background:grey;
   cursor: pointer;
 }
 
@@ -527,7 +527,7 @@ hr {
   width: 25px;
   height: 25px;
   border-radius: 50%;
-  background: #4CAF50;
+  background: grey;
   cursor: pointer;
 }
 

@@ -11,10 +11,11 @@ export default class MyApp extends React.Component {
         const Difference_In_Time = finalBooking[0].checkoutDate.getTime() - finalBooking[0].checkinDate.getTime(); 
         const night = Math.ceil(Difference_In_Time / (1000 * 3600 * 24));    
         
-        const onSuccess = (payment) => {
+        const onSuccess = (finalBooking) => {
             // Congratulation, it came here means everything's fine!
-                    console.log("The payment was succeeded!", payment);
-                    window.location = "/confirmation"
+                    console.log("The payment was succeeded!", finalBooking);
+
+                    window.location = '/'
             		// You can bind the "payment" object's value to your state or props or whatever here, please see below for sample returned data
         }
  
