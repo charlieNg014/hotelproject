@@ -36,7 +36,7 @@ export default function RoomDetails({context}) {
                             
                                 {/* description */}
                                 <article className="desc col-md-4">
-                                    <h3>{detailRooms.description}</h3> 
+                                    <h3 style={{width: 300}}>{detailRooms.description}</h3> 
                                 </article>
                                 {/* details */}
                                 <article className="info col-md-4">
