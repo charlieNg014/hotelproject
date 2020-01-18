@@ -267,11 +267,11 @@ export default function Payment({ context }) {
                                 </Link>
                                   
                               </div>
-                              <div className="col-md-6" style={{marginTop: 20, marginLeft: 45}}>
+                              {/* <div className="col-md-6" style={{marginTop: 20, marginLeft: 45}}>
                                   <Link to ="/confirmation">
                                     <input value="Submit form" className="btn btn-primary btn-sm" type="submit" />
                                   </Link>
-                              </div>
+                              </div> */}
                           </div>
                       
                         </p>

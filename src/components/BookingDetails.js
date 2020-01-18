@@ -239,7 +239,7 @@ export default class BookingDetails extends Component {
             
         }
     
-        // console.log(booking);
+        console.log(booking);
         
         // axios.post("http://localhost:5000/booking/add", booking)
         //     .then(response => console.log(response.data))
@@ -247,15 +247,15 @@ export default class BookingDetails extends Component {
         return booking;
     }
 
-    lastSubmit(booking) {
-        // booking.preventDefault();
+    // lastSubmit(booking) {
+    //     // booking.preventDefault();
         
-        console.log(booking);
+    //     console.log(booking);
         
-        // axios.post("http://localhost:5000/booking/add", booking)
-        //     .then(response => console.log(response.data))
+    //     // axios.post("http://localhost:5000/booking/add", booking)
+    //     //     .then(response => console.log(response.data))
 
-    }
+    // }
 
 
     render() {
@@ -501,7 +501,7 @@ export default class BookingDetails extends Component {
                                 </div>
                                     <div className="form-group">
                                         <Link to="/payment">
-                                            <input value="Submit form" className="btn btn-primary btn-sm" type="submit" onChange={this.onSubmit()} onClick={this.lastSubmit(this.onSubmit())}/>
+                                            <input value="Submit form" className="btn btn-primary btn-sm" type="submit" onClick={this.onSubmit}/>
                                         </Link>
                                     </div>
                                 </form>

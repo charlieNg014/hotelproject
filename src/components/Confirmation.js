@@ -24,11 +24,11 @@ export default function Confirmation({ paymentDetails }) {
     return properDate;
   };
 
-  // function onChangeTotalDays(startDate, finishDate) {
-  //   const Difference_In_Time = finishDate.getTime() - startDate.getTime(); 
-  //   const Difference_In_Days = Math.ceil(Difference_In_Time / (1000 * 3600 * 24));
-  //   return Difference_In_Days;
-  // }
+  function onChangeTotalDays(startDate, finishDate) {
+    const Difference_In_Time = finishDate.getTime() - startDate.getTime(); 
+    const Difference_In_Days = Math.ceil(Difference_In_Time / (1000 * 3600 * 24));
+    return Difference_In_Days;
+  }
 
   return (
     <>
@@ -38,7 +38,7 @@ export default function Confirmation({ paymentDetails }) {
           console.log(finalBooking);
           console.log(detailRooms);
    
-          // const night = onChangeTotalDays(finalBooking[0].checkinDate, finalBooking[0].checkoutDate);  
+          const night = onChangeTotalDays(finalBooking[0].checkinDate, finalBooking[0].checkoutDate);  
           return (
             <div style={{height: 800}}>
             <StyleImage>
@@ -89,7 +89,7 @@ export default function Confirmation({ paymentDetails }) {
                           {/* Payment info  */}
                         <h4 class="scheme-g">Payment</h4>
                         <ul className="list-c">
-                            {/* <p>You have successful paid AUD ${Math.ceil(detailRooms.price*night*1.1)}.</p> */}
+                            <p>You have successful paid AUD ${Math.ceil(detailRooms.price*night*1.1)}.</p>
                         </ul>
 
                         {/* Special request info  */}
@@ -101,7 +101,7 @@ export default function Confirmation({ paymentDetails }) {
                         <p class="scheme-h">
                           Grand Total :{" "}
                           <span style={{ color: "blue", fontSize: 30 }}>
-                            {/* <span> $</span>{Math.ceil(detailRooms.price*night*1.1)}  */}
+                            <span> $</span>{Math.ceil(detailRooms.price*night*1.1)} 
                           </span>
                         </p>
                        
@@ -129,13 +129,13 @@ export default function Confirmation({ paymentDetails }) {
                             <label style={{ marginRight: 91 }} for="fej">
                               Check - in
                             </label>
-                            {/* {getProperDate(finalBooking[0].checkinDate)} */}
+                            {getProperDate(finalBooking[0].checkinDate)}
                           </li>
                           <li>
                             <label style={{ marginRight: 81 }} for="fej">
                               Check - out
                             </label>
-                            {/* {getProperDate(finalBooking[0].checkoutDate)} */}
+                            {getProperDate(finalBooking[0].checkoutDate)}
                           </li>
                         </ul>
                         <h4 class="scheme-g"> Charges </h4>
@@ -144,7 +144,7 @@ export default function Confirmation({ paymentDetails }) {
                             <label style={{ marginRight: 125 }} for="fej">
                               Time
                             </label>
-                            {/* {(night <= 1) ? `0${night} night` : `${(night >1 && night <=9) ? `0${night} nights` : `${night} nights`}`} */}
+                            {(night <= 1) ? `0${night} night` : `${(night >1 && night <=9) ? `0${night} nights` : `${night} nights`}`}
                           </li>
                           <li>
                             <label style={{ marginRight: 119 }} for="fej">
@@ -168,7 +168,7 @@ export default function Confirmation({ paymentDetails }) {
                             <label style={{ marginRight: 85 }} for="fej">
                               Grant Total
                             </label>
-                            {/* ${Math.ceil(detailRooms.price*night*1.1)}  */}
+                            ${Math.ceil(detailRooms.price*night*1.1)} 
                           </li>
                         </ul>
                       </div>
