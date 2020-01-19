@@ -620,6 +620,7 @@ hr {
 
 .info h6 {
   font-weight: 300;
+  widows: 160px;
 }
 
 .room-extras {
@@ -790,6 +791,7 @@ hr {
   font-size: 50px;
   color: white;
   font-style: italic;
+  margin-bottom: 30px;
 }
 
 .month-text {
@@ -862,7 +864,7 @@ hr {
   margin: 0 0 14px;
   padding: 0;
   font-size: 15px;
-  margin-left: 29px;
+  margin-left: 0px;
 }
 
 .billing-title {

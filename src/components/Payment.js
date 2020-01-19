@@ -93,7 +93,7 @@ export default function Payment({ context }) {
               <div className="container container-fluid summary-box">
                 <div
                   className="container container-fluid"
-                  style={{ marginTop: 20, height: 1100 }}
+                  style={{ marginTop: 20, height: 1230 }}
                 >
                   <div className="row" style={{ height: 1000 }}>
                     <div className="col-md-6">

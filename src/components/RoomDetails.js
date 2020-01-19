@@ -39,7 +39,7 @@ export default function RoomDetails({context}) {
                                     <h3 style={{width: 300}}>{detailRooms.description}</h3> 
                                 </article>
                                 {/* details */}
-                                <article className="info col-md-4" style={{width: 300}}>
+                                <article className="info col-md-4" >
                                     <h3>Infomation</h3>
                                     <h6>Price: AUD ${detailRooms.price}</h6>
                                     <h6>Size: {detailRooms.size}m2</h6>
@@ -65,7 +65,7 @@ export default function RoomDetails({context}) {
                                             minDate={checkoutDate}
                                         />
                                     </div>
-                                    <div style={{marginTop: 20}}>
+                                    <div style={{marginTop: 46}}>
                                         <Link  to="/booking/add">
                                             <input 
                                                 type="submit"
