@@ -39,7 +39,7 @@ export default function RoomDetails({context}) {
                                     <h3 style={{width: 300}}>{detailRooms.description}</h3> 
                                 </article>
                                 {/* details */}
-                                <article className="info col-md-4">
+                                <article className="info col-md-4" style={{width: 300}}>
                                     <h3>Infomation</h3>
                                     <h6>Price: AUD ${detailRooms.price}</h6>
                                     <h6>Size: {detailRooms.size}m2</h6>
