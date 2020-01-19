@@ -835,7 +835,7 @@ hr {
 }
 
 .summary-box {
-  height: 1110px;
+  height: 1170px;
   background-color: lightgrey;
 }
 
@@ -864,7 +864,7 @@ hr {
   margin: 0 0 14px;
   padding: 0;
   font-size: 15px;
-  margin-left: 0px;
+  margin-left: -10px;
 }
 
 .billing-title {
