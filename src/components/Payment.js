@@ -74,12 +74,12 @@ export default function Payment({ context }) {
     <>
       <ProjectConsumer>
         {(value) => {
-          const { detailRooms, finalBooking, testBooking } = value;
-          console.log(testBooking);
+          const { detailRooms, finalBooking} = value;
           console.log(finalBooking);
-          
-          
-          const night = onChangeTotalDays(finalBooking[0].checkinDate, finalBooking[0].checkoutDate);   
+          console.log(detailRooms);
+          // console.log(testBooking);
+    
+          const night = onChangeTotalDays(finalBooking.checkinDate, finalBooking.checkoutDate);   
 
           return (
             <>
@@ -106,67 +106,67 @@ export default function Payment({ context }) {
                             <label style={{ marginRight: 60 }} for="fej">
                               First Name
                             </label>
-                            {finalBooking[0].firstname}
+                            {finalBooking.firstname}
                           </li>
                           <li>
                             <label style={{ marginRight: 62 }} for="fej">
                               Last Name
                             </label>
-                            {finalBooking[0].lastname}
+                            {finalBooking.lastname}
                           </li>
                           <li>
                             <label style={{ marginRight: 95 }} for="fej">
                               Phone
                             </label>
-                            {finalBooking[0].phone}
+                            {finalBooking.phone}
                           </li>
                           <li>
                             <label style={{ marginRight: 98 }} for="fej">
                               Email
                             </label>
-                            {finalBooking[0].email}
+                            {finalBooking.email}
                           </li>
                           <li>
                             <label style={{ marginRight: 80 }} for="fej">
                               Address
                             </label>
-                            {finalBooking[0].address}
+                            {finalBooking.address}
                           </li>
                           <li>
                             <label style={{ marginRight: 110 }} for="fej">
                               City
                             </label>
-                            {finalBooking[0].city}
+                            {finalBooking.city}
                           </li>
                           <li>
                             <label style={{ marginRight: 80 }} for="fej">
                               Country
                             </label>
-                            {finalBooking[0].country}
+                            {finalBooking.country}
                           </li>
                           <li>
                             <label style={{ marginRight: 73 }} for="fej">
                               Postcode
                             </label>
-                            {finalBooking[0].postcode}
+                            {finalBooking.postcode}
                           </li>
                           <li>
                             <label style={{ marginRight: 79 }} for="fej">
                               Request
                             </label>
-                            {finalBooking[0].request}
+                            {finalBooking.request}
                           </li>
                           <li>
                             <label style={{ marginRight: 91 }} for="fej">
                               Arrival
                             </label>
-                            {finalBooking[0].arrival}
+                            {finalBooking.arrival}
                           </li>
                           <li>
                             <label style={{ marginRight: 83 }} for="fej">
                               Coupon
                             </label>
-                            {finalBooking[0].coupon}
+                            {finalBooking.coupon}
                           </li>
                         </ul>
                       </div>
@@ -181,7 +181,7 @@ export default function Payment({ context }) {
                             <label style={{ marginRight: 124 }} for="fej">
                               Room
                             </label>
-                            {finalBooking[0].roomname}
+                            {finalBooking.roomname}
                           </li>
                           <li>
                             <label style={{ marginRight: 57 }} for="fej">
@@ -193,13 +193,13 @@ export default function Payment({ context }) {
                             <label style={{ marginRight: 91 }} for="fej">
                               Check - in
                             </label>
-                            {getProperDate(finalBooking[0].checkinDate)}
+                            {getProperDate(finalBooking.checkinDate)}
                           </li>
                           <li>
                             <label style={{ marginRight: 81 }} for="fej">
                               Check - out
                             </label>
-                            {getProperDate(finalBooking[0].checkoutDate)}
+                            {getProperDate(finalBooking.checkoutDate)}
                           </li>
                         </ul>
                         <h4 class="scheme-g"> Charges </h4>

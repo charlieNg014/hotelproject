@@ -33,20 +33,20 @@ export default class BookingDetails extends Component {
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
-            firstname: "firstname",
-            lastname: "lastname",
-            email: "email address",
-            phone: "phone number",
-            country: "country",
-            checkinDate: "expected check-in date",
-            checkoutDate: "expected check-out date",
-            roomname: "name of room",
-            address: "your address",
-            city: "your city",
-            postcode: "your postcode",
-            request: "any special request",
+            firstname: "",
+            lastname: "",
+            email: "",
+            phone: "",
+            country: "",
+            checkinDate: "",
+            checkoutDate: "",
+            roomname: "",
+            address: "",
+            city: "",
+            postcode: "",
+            request: "",
             arrival: "I do not know",
-            coupon: "any coupon",
+            coupon: "",
             car: "off",
             seaview: "off",
             satellite: "off",
@@ -212,10 +212,8 @@ export default class BookingDetails extends Component {
         this.state.checkoutDate = date;
     }
 
-
     onSubmit() {
-        // e.preventDefault();
-
+        
         const booking = {
             firstname: this.state.firstname,
             lastname: this.state.lastname,
@@ -234,18 +232,20 @@ export default class BookingDetails extends Component {
             car: this.state.car,
             seaview: this.state.seaview,
             satelite: this.state.satellite,
-            laundry: this.state.laundry,
-            list: this.state.list
-            
+            laundry: this.state.laundry
         }
     
-        console.log(booking);
+        // console.log(booking);
         
         // axios.post("http://localhost:5000/booking/add", booking)
         //     .then(response => console.log(response.data))
         
+        
         return booking;
     }
+
+
+   
 
     // lastSubmit(booking) {
     //     // booking.preventDefault();
@@ -265,7 +265,6 @@ export default class BookingDetails extends Component {
         this.onChangeCheckinDate(inDate);
         this.onChangeCheckoutDate(outDate);
         
-        
         //get details of checkin day
         const getInDay = inDate.getDate();
         const checkinDay = this.onChangeDay(getInDay);
@@ -281,12 +280,11 @@ export default class BookingDetails extends Component {
         const checkoutYear = outDate.getFullYear();
         
         //getting the booking and then pass it back to context
-        testingBooking(this.onSubmit());
         
         
         //getting total days of stay 
         const totalDays = this.onChangeTotalDays(inDate, outDate);
-        console.log(totalDays);
+        // console.log(totalDays);
 
         //set the value for arrival
         const arrival = ["I do not know", "12:00 - 1:00 am", "1:00 - 2:00 am", "2:00 - 3:00 am", "3:00 - 4:00 am", "4:00 - 5:00 am", "5:00 - 6:00 am", "6:00 - 7:00 am", "7:00 - 8:00 am", "8:00 - 9:00 am", "9:00 - 10:00 am", "10:00 - 11:00 am", "11:00 - 12:00 am",
@@ -403,20 +401,20 @@ export default class BookingDetails extends Component {
                                     <div className="form-row">
                                         {/* first name */}
                                         <div className="col-md-6">
-                                            <label for="validationCustom01">First name</label>
-                                            <input type="text" className="form-control" id="validationCustom01" 
+                                            <label for="">First name</label>
+                                            <input type="text" className="form-control" id="" 
                                                onChange={this.onChangeFirstname} required />
                                         </div>
                                         {/* last name  */}
                                         <div className="col-md-6 mb-3">
-                                            <label for="validationCustom02">Last name</label>
-                                            <input type="text" className="form-control" id="validationCustom02"  
+                                            <label for="">Last name</label>
+                                            <input type="text" className="form-control" id=""  
                                                 onChange={this.onChangeLastname} required />
                                         </div>
                                         {/* phone  */}
                                         <div className="col-md-6 mb-3">
-                                            <label for="validationCustom01">Phone</label>
-                                            <input type="text" className="form-control" id="validationCustom01" 
+                                            <label for="">Phone</label>
+                                            <input type="text" className="form-control" id="" 
                                                onChange={this.onChangePhone} required />
                                         </div>
                                         {/* email  */}
@@ -432,44 +430,44 @@ export default class BookingDetails extends Component {
                                         </div>
                                         {/* address  */}
                                         <div className="col-md-6 mb-3">
-                                            <label for="validationCustom01">Address</label>
-                                            <input type="text" className="form-control" id="validationCustom01" 
+                                            <label for="">Address</label>
+                                            <input type="text" className="form-control" id="" 
                                                onChange={this.onChangeAddres} required />
                                         </div>
 
                                         {/* city  */}
                                         <div className="col-md-6 mb-3">
-                                            <label for="validationCustom01">City</label>
-                                            <input type="text" className="form-control" id="validationCustom01" 
+                                            <label for="">City</label>
+                                            <input type="text" className="form-control" id="" 
                                                onChange={this.onChangeCity} required />
                                         </div>
 
                                         {/* country  */}
                                         <div className="col-md-6 mb-3">
-                                            <label for="validationCustom01">Country</label>
-                                            <input type="text" className="form-control" id="validationCustom01" 
+                                            <label for="">Country</label>
+                                            <input type="text" className="form-control" id="" 
                                                onChange={this.onChangeCountry} required />
                                         </div>
 
                                         {/* postcode  */}
                                         <div className="col-md-6 mb-3">
-                                            <label for="validationCustom01">Postcode</label>
-                                            <input type="text" className="form-control" id="validationCustom01" 
+                                            <label for="">Postcode</label>
+                                            <input type="text" className="form-control" id="" 
                                                onChange={this.onChangePostcode} required />
                                         </div>
                                     </div>
                                 <div className="form-row">
                                     {/* request */}
                                     <div className="col-md-12 mb-3">
-                                        <label for="validationCustom01">Request</label>
-                                        <textarea type="text" className="form-control" id="validationCustom01" 
+                                        <label for="">Request</label>
+                                        <textarea type="text" className="form-control" id="" 
                                         rows="6" required onChange={this.onChangeRequest}></textarea>
                                     </div>
                                 </div>
                                 <div className="form-row">
                                     {/* arrival  */}
                                     <div className="col-md-6 mb-3">
-                                        <label for="validationCustom01">Arrival</label>
+                                        <label for="">Arrival</label>
                                         <select 
                                             name="arrival" 
                                             id="arrival"  
@@ -481,8 +479,8 @@ export default class BookingDetails extends Component {
                                     </div>
                                     {/* coupon  */}
                                     <div className="col-md-6 mb-3">
-                                        <label for="validationCustom01">Coupon</label>
-                                        <input type="text" className="form-control" id="validationCustom01"
+                                        <label for="">Coupon</label>
+                                        <input type="text" className="form-control" id=""
                                            onChange={this.onChangeCoupon} required />
                                     </div>
                                 </div>
@@ -500,8 +498,8 @@ export default class BookingDetails extends Component {
                                     </div>
                                 </div>
                                     <div className="form-group">
-                                        <Link to="/payment">
-                                            <input value="Submit form" className="btn btn-primary btn-sm" type="submit" onClick={this.onSubmit}/>
+                                        <Link to ="/payment">
+                                            <input value="Submit form" className="btn btn-primary btn-sm"  onClick={() => testingBooking(this.onSubmit())}/>
                                         </Link>
                                     </div>
                                 </form>

@@ -28,7 +28,7 @@ class ProjectProvider extends Component {
         checkoutDate: addDays(new Date(), 1),
         startingDate: new Date(),
         testArray: ["1", "2"],
-        finalBooking: ["1"]
+        finalBooking: []
     };
 
     //assing value to array
@@ -75,13 +75,15 @@ class ProjectProvider extends Component {
         return checkoutDate;
     };
 
-    getBookingDetails = (detail) => {
-        const testBooking = this.state.finalBooking.splice(0, 1, detail);
-        // console.log(finalBooking);
-        console.log(testBooking);
+    getBookingDetails = (details) => {
+        this.setState({
+            finalBooking: details
+        })
+        const finalBooking = details;
+        // const testBooking = this.state.finalBooking.splice(0, 1, details);
+        // console.log(testBooking);
        
-    
-        return testBooking;
+        return finalBooking;
     };
 
     onSubmit = (checkinDate, checkoutDate) => {
