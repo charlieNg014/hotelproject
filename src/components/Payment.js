@@ -178,6 +178,11 @@ export default function Payment({ context }) {
                             {finalBooking.coupon}
                           </li>
                         </ul>
+                        <div className="row">
+                            <div className="col-md-6" style={{marginRight: 25, marginLeft: 44, marginTop: 20}}> 
+                              <PaymentDisplay paymentDisplay = {finalBooking} bookingDisplay = {detailRooms}/>
+                            </div>  
+                        </div>
                       </div>
                     </div>
                     <div className="col-md-6">
@@ -259,17 +264,6 @@ export default function Payment({ context }) {
                           </span>
                         </p>
                         <p class="link-c">
-                          <div className="row">
-                            <div className="col-md-6" style={{marginRight: 25, marginLeft: 44, marginTop: 20}}> 
-                              <PaymentDisplay paymentDisplay = {finalBooking} bookingDisplay = {detailRooms}/>
-                            </div>
-                              <div className="col-md-6" style={{marginTop: 20, marginLeft: 45}}>
-                                  <Link to ="/confirmation">
-                                    <input value="Submit form" className="btn btn-primary btn-sm" type="submit" />
-                                  </Link>
-                              </div>
-                          </div>
-                      
                         </p>
                       </div>
                     </div>

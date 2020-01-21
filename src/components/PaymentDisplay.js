@@ -94,31 +94,23 @@ export default function Payment({ paymentDisplay, bookingDisplay }) {
 
           return (
             <>
-              <div className="container container-fluid summary-box">
-                <div
-                  className="container container-fluid"
-                  style={{ marginTop: 20}}>
-                        <p class="link-c">
-                          <div className="row">
-                            <div className="col-md-6" > 
-                              {/* <Link to="/confirmation"> */}
-                                <StripeCheckout
-                                    stripeKey="pk_test_ivwpgGyuTBJ0DLTExykuQwmN00p6kAAxKf"
-                                    token={handleToken}
-                                    billingAddress
-                                    shippingAddress
-                                    name="Payment"
-                                    amount={detailRooms.price * night * 1.1 * 100}
-                                />
-                              {/* </Link> */}
-                            </div>
-                              <div className="col-md-6">
-                                  <PaypalButton /> 
-                              </div>
-                          </div>
-                        </p>
-                      </div>
+                <div className="row">
+                <div className="col-md-6" > 
+                    {/* <Link to="/confirmation"> */}
+                    <StripeCheckout
+                        stripeKey="pk_test_ivwpgGyuTBJ0DLTExykuQwmN00p6kAAxKf"
+                        token={handleToken}
+                        billingAddress
+                        shippingAddress
+                        name="Payment"
+                        amount={detailRooms.price * night * 1.1 * 100}
+                    />
+                    {/* </Link> */}
+                </div>
+                    <div className="col-md-6">
+                        <PaypalButton /> 
                     </div>
+                </div>
             </>
           );
         }}
