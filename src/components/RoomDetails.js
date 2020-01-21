@@ -5,13 +5,31 @@ import Banner from './Banner';
 import {Link} from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
-import {addDays} from "react-datepicker";
+// import {addDays, subDays} from "react-datepicker";
+import axios from "axios"
+import addDays from 'date-fns/addDays'
 
 export default function RoomDetails({context}) {
     return(
         <ProjectConsumer>
             {value => {
                 const {detailRooms, handleCheckinDateChange, handleCheckoutDateChange, checkinDate, checkoutDate, onSubmit} = value;
+
+                
+                console.log(new Date());
+                
+                
+                //get the booking for specific room 
+                axios.get(`http://localhost:5000/booking/${detailRooms.name}`)
+                .then(response => {
+                    console.log(response.data);
+                    const test = response.data;
+                    test.forEach(result => { 
+                        console.log(new Date((result.checkoutDate)).getDate());
+                    })
+                    
+                    
+                })
                 
                 return(
                     <>
@@ -54,7 +72,7 @@ export default function RoomDetails({context}) {
                                         <DatePicker
                                             selected={checkinDate}
                                             onChange={handleCheckinDateChange}
-                                            minDate={checkinDate}
+                                            minDate={new Date()}
                                         />
                                     </div>
                                     <div>
@@ -62,7 +80,14 @@ export default function RoomDetails({context}) {
                                         <DatePicker
                                             selected={checkoutDate}
                                             onChange={handleCheckoutDateChange}
-                                            minDate={checkoutDate}
+                                            minDate={addDays(checkinDate, 1)}
+                                            endDate={checkoutDate}
+                                            startDate={checkinDate}
+                                            // excludeDates={
+                                            //     [
+                                            //        addDays(checkinDate, 2)
+                                            //     ]}
+                                            // maxDate = {addDays(checkinDate, 4)}
                                         />
                                     </div>
                                     <div style={{marginTop: 46}}>

@@ -55,5 +55,12 @@ router.post("/add", function(req, res) {
     .catch(err => res.status(400).json("Error: " + err))
 })
 
+//getting date for specific room slug
+router.get("/:roomname", function(req, res) {
+    BookingDetails.find({roomname: req.params.roomname})
+    .then (bookingwithname => res.json(bookingwithname))
+    .catch(err => res.status(400).json("Error: " + err))
+})
+
 
 module.exports = router;

@@ -260,7 +260,7 @@ export default function Payment({ context }) {
                         </p>
                         {/* <p class="link-c">
                         </p> */}
-                        <div className="row">
+                        <div className="row" >
                             <div className="col-md-6" style={{marginRight: 25, marginLeft: 44, marginTop: 20}}> 
                               <PaymentDisplay paymentDisplay = {finalBooking} bookingDisplay = {detailRooms}/>
                             </div>  
