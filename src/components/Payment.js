@@ -8,44 +8,53 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { ProjectConsumer } from "../context";
 import PaypalButton from "./PaypalButton";
+import PaymentDisplay from "./PaymentDisplay";
 
 toast.configure();
 
 export default function Payment({ context }) {
 
-  const [testingProduct] = React.useState({
-    name: "charlie",
-    price: 300,
-    description: "testing",
-    number: 3
-  });
+  // const [testingProduct] = React.useState({
+  //   name: "charlie",
+  //   price: 300,
+  //   description: "testing",
+  //   number: 3
+  // });
 
-  async function handleToken(token) {
-    // console.log(token);
-    const response = await axios.post(
-      "http://localhost:5000/payment/card/checkout",
-      {
-        token,
-        testingProduct
-      }
-    );
+  // async function handleToken(token) {
+  //   // console.log(token);
+  //   // console.log(booking);
+    
+  //   const response = await axios.post(
+  //     "http://localhost:5000/payment/card/checkout",
+  //     {
+  //       token,
+  //       testingProduct
+  //     }
+  //   );
 
-    const { status } = response.data;
-    if (status === "success") {
-      toast("Successful. Please check your email for the details!", {
-        type: "Success",
-        className:'foo-bar'
-      });
+   
 
-      //set the screen to confirmation page
-      window.location = "/";
-    } else {
-      toast("Something went wrong", {
-        type: "error",
-        className:"foo-bar"
-      });
-    }
-  }
+  //   const { status } = response.data;
+  //   if (status === "success") {
+  //     toast("Successful. Please check your email for the details!", {
+  //       type: "Success",
+  //       className:'foo-bar'
+  //     });
+
+  //     // axios.post("http://localhost:5000/booking/add", booking)
+  //     // .then(response => console.log(response.data))
+
+  //     //set the screen to confirmation page
+  //     window.location = "/";
+
+  //   } else {
+  //     toast("Something went wrong", {
+  //       type: "error",
+  //       className:"foo-bar"
+  //     });
+  //   }
+  // }
 
   //get the month properly
   function getMonth(month) {
@@ -252,23 +261,13 @@ export default function Payment({ context }) {
                         <p class="link-c">
                           <div className="row">
                             <div className="col-md-6" style={{marginRight: 25, marginLeft: 44, marginTop: 20}}> 
-                              <StripeCheckout
-                                  stripeKey="pk_test_ivwpgGyuTBJ0DLTExykuQwmN00p6kAAxKf"
-                                  token={handleToken}
-                                  billingAddress
-                                  shippingAddress
-                                  name="Payment"
-                                  amount={detailRooms.price * night * 1.1 * 100}
-                              />
+                              <PaymentDisplay paymentDisplay = {finalBooking} bookingDisplay = {detailRooms}/>
                             </div>
                               <div className="col-md-6" style={{marginTop: 20, marginLeft: 45}}>
-                                  <PaypalButton /> 
-                              </div>
-                              {/* <div className="col-md-6" style={{marginTop: 20, marginLeft: 45}}>
                                   <Link to ="/confirmation">
                                     <input value="Submit form" className="btn btn-primary btn-sm" type="submit" />
                                   </Link>
-                              </div> */}
+                              </div>
                           </div>
                       
                         </p>

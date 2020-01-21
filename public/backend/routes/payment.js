@@ -16,18 +16,18 @@ router.post("/checkout", async function(req, res) {
     let error;
     let status;
     try {
-        const { testingProduct, token } = req.body;
+        const { passingProduct, token } = req.body;
         const customer = await stripe.customers.create({
             email: token.email,
             source: token.id
         });
         const idempotency_key = uuid();
         const charge = await stripe.charges.create({
-            amount: testingProduct.price * testingProduct.number,
+            amount: passingProduct.price * passingProduct.number,
             currency: "AUD",
             customer: customer.id,
             receipt_email: token.email,
-            description: "Booking",
+            description: passingProduct.description,
             shipping: {
                 name: token.card.name,
                 address: {

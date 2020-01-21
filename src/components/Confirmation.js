@@ -38,7 +38,7 @@ export default function Confirmation({ paymentDetails }) {
           console.log(finalBooking);
           console.log(detailRooms);
    
-          const night = onChangeTotalDays(finalBooking[0].checkinDate, finalBooking[0].checkoutDate);  
+          const night = onChangeTotalDays(finalBooking.checkinDate, finalBooking.checkoutDate);  
           return (
             <div style={{height: 800}}>
             <StyleImage>
@@ -64,25 +64,25 @@ export default function Confirmation({ paymentDetails }) {
                             <label style={{ marginRight: 60 }} for="fej">
                               First Name
                             </label>
-                            {finalBooking[0].firstname}
+                            {finalBooking.firstname}
                           </li>
                           <li>
                             <label style={{ marginRight: 62 }} for="fej">
                               Last Name
                             </label>
-                            {finalBooking[0].lastname}
+                            {finalBooking.lastname}
                           </li>
                           <li>
                             <label style={{ marginRight: 90 }} for="fej">
                               Phone
                             </label>
-                            {finalBooking[0].phone}
+                            {finalBooking.phone}
                           </li>
                           <li>
                             <label style={{ marginRight: 79 }} for="fej">
                               Address
                             </label>
-                            {finalBooking[0].address}
+                            {finalBooking.address}
                           </li>
                         </ul>
                 
@@ -95,7 +95,7 @@ export default function Confirmation({ paymentDetails }) {
                         {/* Special request info  */}
                         <h4 class="scheme-g">Special request</h4>
                         <ul className="list-c">
-                            <p>{finalBooking[0].request}</p>
+                            <p>{finalBooking.request}</p>
                         </ul>
 
                         <p class="scheme-h">
@@ -117,7 +117,7 @@ export default function Confirmation({ paymentDetails }) {
                             <label style={{ marginRight: 120 }} for="fej">
                               Room
                             </label>
-                            {finalBooking[0].roomname}
+                            {finalBooking.roomname}
                           </li>
                           <li>
                             <label style={{ marginRight: 62 }} for="fej">
@@ -129,13 +129,13 @@ export default function Confirmation({ paymentDetails }) {
                             <label style={{ marginRight: 91 }} for="fej">
                               Check - in
                             </label>
-                            {getProperDate(finalBooking[0].checkinDate)}
+                            {getProperDate(finalBooking.checkinDate)}
                           </li>
                           <li>
                             <label style={{ marginRight: 81 }} for="fej">
                               Check - out
                             </label>
-                            {getProperDate(finalBooking[0].checkoutDate)}
+                            {getProperDate(finalBooking.checkoutDate)}
                           </li>
                         </ul>
                         <h4 class="scheme-g"> Charges </h4>

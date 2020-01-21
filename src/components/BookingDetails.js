@@ -237,9 +237,8 @@ export default class BookingDetails extends Component {
     
         // console.log(booking);
         
-        // axios.post("http://localhost:5000/booking/add", booking)
-        //     .then(response => console.log(response.data))
-        
+    //     axios.post("http://localhost:5000/booking/add", booking)
+    //   .then(response => console.log(response.data))
         
         return booking;
     }
