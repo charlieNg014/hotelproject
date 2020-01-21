@@ -95,7 +95,7 @@ export default function Payment({ paymentDisplay, bookingDisplay }) {
           return (
             <>
                 <div className="row">
-                <div className="col-md-6" > 
+                <div className="col-md-6" style={{width: 150, marginBottom: 20}} > 
                     {/* <Link to="/confirmation"> */}
                     <StripeCheckout
                         stripeKey="pk_test_ivwpgGyuTBJ0DLTExykuQwmN00p6kAAxKf"

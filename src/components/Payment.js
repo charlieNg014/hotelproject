@@ -178,11 +178,6 @@ export default function Payment({ context }) {
                             {finalBooking.coupon}
                           </li>
                         </ul>
-                        <div className="row">
-                            <div className="col-md-6" style={{marginRight: 25, marginLeft: 44, marginTop: 20}}> 
-                              <PaymentDisplay paymentDisplay = {finalBooking} bookingDisplay = {detailRooms}/>
-                            </div>  
-                        </div>
                       </div>
                     </div>
                     <div className="col-md-6">
@@ -263,8 +258,13 @@ export default function Payment({ context }) {
                             <span> $</span>{Math.ceil(detailRooms.price * night * 1.1)}
                           </span>
                         </p>
-                        <p class="link-c">
-                        </p>
+                        {/* <p class="link-c">
+                        </p> */}
+                        <div className="row">
+                            <div className="col-md-6" style={{marginRight: 25, marginLeft: 44, marginTop: 20}}> 
+                              <PaymentDisplay paymentDisplay = {finalBooking} bookingDisplay = {detailRooms}/>
+                            </div>  
+                        </div>
                       </div>
                     </div>
                   </div>
