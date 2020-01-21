@@ -104,6 +104,7 @@ export default function Payment({ paymentDisplay, bookingDisplay }) {
                         shippingAddress
                         name="Payment"
                         amount={detailRooms.price * night * 1.1 * 100}
+                        style={{width: 150}}
                     />
                     {/* </Link> */}
                 </div>
