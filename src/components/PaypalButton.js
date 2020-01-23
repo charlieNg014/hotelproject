@@ -48,6 +48,16 @@ export default class MyApp extends React.Component {
         const onCancel = (data) => {
             // User pressed "cancel" or close Paypal's popup!
             console.log('The payment was cancelled!', data);
+            toast("Something went wrong", {
+                type: "error",
+                position: toast.POSITION.TOP_CENTER,
+                className:"foo-bar"
+              });
+        
+              //set delay for 6 seconds before redirect
+              setTimeout(function () {
+                window.location.href = "/"; 
+             }, 6000);
             // You can bind the "data" object's value to your state or props or whatever here, please see below for sample returned data
         }
  
