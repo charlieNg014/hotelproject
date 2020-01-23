@@ -10,18 +10,19 @@ export default class Navbar extends Component {
     }
     handleToggle =() => {
         this.setState({isNavbarOpen: !this.state.isNavbarOpen})
+        // window.location = "/"
     }
     render() {
         return (
-            <nav className="navbar-fluid">
+            <nav className="navbar-fluid  mr-auto">
                 <div className="nav-center">
-                    <div className="nav-header">
-                        <Link to="/">
+                    <div className="nav-header active">
+                        {/* <Link to="/"> */}
                             <img src={logo} alt="My navbar" />
-                            <button type="button" className="nav-btn" onClick={this.handleToggle}>
+                            <button type="button"  data-toggle="collapse" data-target=".navbar-collapse.show" style={{marginLeft: -30}} className="nav-btn" onClick={this.handleToggle}>
                                 <FaAlignRight className="nav-icon"/> 
                             </button>
-                        </Link>
+                        {/* </Link> */}
                     </div>
                     <ul className={this.state.isNavbarOpen ? "nav-links show-nav" : "nav-links"}>
                         <li style={{marginTop: -5}}>

@@ -104,7 +104,7 @@ export default function Payment({ context }) {
               <div className="container container-fluid summary-box">
                 <div
                   className="container container-fluid"
-                  style={{ marginTop: 20, height: 1230 }}
+                  style={{ marginTop: 20, height: 1170 }}
                 >
                   <div className="row" style={{ height: 1000 }}>
                     <div className="col-md-6">
@@ -240,7 +240,7 @@ export default function Payment({ context }) {
                             ${detailRooms.price * 0.1}
                           </li>
                           <li>
-                            <label style={{ marginRight: 79 }} for="fej">
+                            <label style={{ marginRight: 77 }} for="fej">
                               Grant Total
                             </label>
                             ${Math.ceil(detailRooms.price*night*1.1)} 

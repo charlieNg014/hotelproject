@@ -15,6 +15,7 @@
   --mainSpacing: 3px;
   --lightShadow: 2px 5px 3px 0px rgba(0, 0, 0, 0.5);
   --darkShadow: 4px 10px 5px 0px rgba(0, 0, 0, 0.5);
+  width: 107%;
 }
 
 
@@ -124,7 +125,7 @@ h6 {
   display: flex;
   justify-content: space-between;
   margin-left: 15px;
-  margin-right: -20px;
+  margin-right: 20px;
   margin-top: 15px;
 }
 
@@ -620,7 +621,9 @@ hr {
 
 .info h6 {
   font-weight: 300;
-  widows: 160px;
+  width: 160px;
+  text-align: center;
+  margin-left: 50px;
 }
 
 .room-extras {
