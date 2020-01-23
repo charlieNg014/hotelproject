@@ -1,8 +1,5 @@
 import React from "react";
 import StripeCheckout from "react-stripe-checkout";
-import Banner from "./Banner";
-import StyleImage from "./StyleImage";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -13,9 +10,10 @@ import {ProjectContext} from '../context';
 
 toast.configure();
 
-export default function Payment({ paymentDisplay, bookingDisplay }) {
+export default function PaymentDisplay({ paymentDisplay, bookingDisplay, test }) {
     // console.log(paymentDisplay);
     // console.log(bookingDisplay);
+console.log(test);
 
     const {firstname, lastname} = paymentDisplay;
     const {price, name} = bookingDisplay;

@@ -181,25 +181,6 @@ export default class BookingDetails extends Component {
         })
     }
 
-    onChangeDay(day) {
-        if (day < 10) {
-           day = "0" + day.toString();
-        } 
-        return day;
-    }
-
-    onChangeMonth(month) {
-        const mlist = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
-        return mlist[month];
-    }
-
-    onChangeTotalDays(startDate, finishDate) {
-        const Difference_In_Time = finishDate.getTime() - startDate.getTime(); 
-        const Difference_In_Days = Math.ceil(Difference_In_Time / (1000 * 3600 * 24));
-        
-        return Difference_In_Days;
-    }
-
     onChangeName(name) {
         this.state.roomname = name;
     }
@@ -259,30 +240,38 @@ export default class BookingDetails extends Component {
 
     render() {
 
-        let {checkinDate: inDate, checkoutDate: outDate, detailRooms: details, getBookingDetails: testingBooking} = this.context;
+        let {checkinDate: inDate, 
+            checkoutDate: outDate, 
+            detailRooms: details, 
+            getBookingDetails: testingBooking,
+            onChangeDay: getOnChangeDay,
+            onChangeMonth: getOnChangeMonth,
+            onChangeTotalDays: getOnChangeTotalDays
+        } = this.context;
+        
         this.onChangeName(details.name);
         this.onChangeCheckinDate(inDate);
         this.onChangeCheckoutDate(outDate);
         
         //get details of checkin day
         const getInDay = inDate.getDate();
-        const checkinDay = this.onChangeDay(getInDay);
+        const checkinDay = getOnChangeDay(getInDay);
         const getInMonth = inDate.getMonth() +1;
-        const checkinMonth = this.onChangeMonth(getInMonth)
+        const checkinMonth = getOnChangeMonth(getInMonth)
         const checkinYear = inDate.getFullYear();
 
         //get details of checkout day
         const getOutDay = outDate.getDate();
-        const checkoutDay = this.onChangeDay(getOutDay)
+        const checkoutDay = getOnChangeDay(getOutDay)
         const getOutMonth = inDate.getMonth() +1;
-        const checkoutMonth = this.onChangeMonth(getOutMonth)
+        const checkoutMonth = getOnChangeMonth(getOutMonth)
         const checkoutYear = outDate.getFullYear();
         
         //getting the booking and then pass it back to context
         
         
         //getting total days of stay 
-        const totalDays = this.onChangeTotalDays(inDate, outDate);
+        const totalDays = getOnChangeTotalDays(inDate, outDate);
         // console.log(totalDays);
 
         //set the value for arrival

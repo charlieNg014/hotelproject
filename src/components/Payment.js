@@ -9,6 +9,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { ProjectConsumer } from "../context";
 import PaypalButton from "./PaypalButton";
 import PaymentDisplay from "./PaymentDisplay";
+import DateDisplay from "./DateDisplay";
 
 toast.configure();
 
@@ -86,6 +87,7 @@ export default function Payment({ context }) {
           const { detailRooms, finalBooking} = value;
           console.log(finalBooking);
           console.log(detailRooms);
+          
           // console.log(testBooking);
     
           const night = onChangeTotalDays(finalBooking.checkinDate, finalBooking.checkoutDate);   

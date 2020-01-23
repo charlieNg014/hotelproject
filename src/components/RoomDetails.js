@@ -5,32 +5,46 @@ import Banner from './Banner';
 import {Link} from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
-// import {addDays, subDays} from "react-datepicker";
 import axios from "axios"
 import addDays from 'date-fns/addDays'
+import DateDisplay from "./DateDisplay";
+import PaymentDisplay from './PaymentDisplay';
 
 export default function RoomDetails({context}) {
+const test = [];
     return(
         <ProjectConsumer>
             {value => {
-                const {detailRooms, handleCheckinDateChange, handleCheckoutDateChange, checkinDate, checkoutDate, onSubmit} = value;
+                const {
+                    detailRooms, 
+                    handleCheckinDateChange, 
+                    handleCheckoutDateChange, 
+                    checkinDate, 
+                    checkoutDate, 
+                    onSubmit,
+                    getBookedDate,
+                    bookedDateArray,
+                    testFunction
+                } = value;
 
+                // testFunction();
                 
-                console.log(new Date());
-                
-                
-                //get the booking for specific room 
-                axios.get(`http://localhost:5000/booking/${detailRooms.name}`)
-                .then(response => {
-                    console.log(response.data);
-                    const test = response.data;
-                    test.forEach(result => { 
-                        console.log(new Date((result.checkoutDate)).getDate());
-                    })
+                // axios.get(`http://localhost:5000/booking/${detailRooms.name}`)
+                // .then(response => {
+                //     // console.log(response.data);
+                //     const test = response.data;
+                //     console.log(test);
+
+                //     console.log(myTest(test));
+                //     getBookedDate(test);
                     
                     
-                })
-                
+                //     return (
+                //         <>
+                       
+                //         </>
+                //     )
+                // })
                 return(
                     <>
                     <StyledImage img={detailRooms.images[0]}>
@@ -67,29 +81,30 @@ export default function RoomDetails({context}) {
                                 </article>
                                 {/* description */}
                                 <article className="desc col-md-4">
-                                    <div>
+                                    {/* <div>
                                     <p style={{marginBottom: 15, fontWeight:"bold"}}>Check-in</p>
                                         <DatePicker
                                             selected={checkinDate}
                                             onChange={handleCheckinDateChange}
                                             minDate={new Date()}
+                                            maxDate = {addDays(checkinDate, 40)}
                                         />
                                     </div>
                                     <div>
                                     <p style={{marginBottom: 15, marginTop:15, fontWeight: "bold"}}>Check-out</p>
                                         <DatePicker
-                                            selected={checkoutDate}
+                                            selected={addDays(checkinDate, 1)}
                                             onChange={handleCheckoutDateChange}
                                             minDate={addDays(checkinDate, 1)}
                                             endDate={checkoutDate}
                                             startDate={checkinDate}
-                                            // excludeDates={
-                                            //     [
-                                            //        addDays(checkinDate, 2)
-                                            //     ]}
-                                            // maxDate = {addDays(checkinDate, 4)}
+                                            // excludeDates={t1}
+                                            maxDate = {addDays(new Date(), 40)}
                                         />
-                                    </div>
+                                    </div> */}
+                                    
+                                    {/* Problems still here. Need to be fixed  */}
+                                    <DateDisplay result = {bookedDateArray}/>
                                     <div style={{marginTop: 46}}>
                                         <Link  to="/booking/add">
                                             <input 

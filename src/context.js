@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import items from "./data";
 import { addDays } from "date-fns/esm";
+import axios from 'axios';
 
 //create context
 const ProjectContext = React.createContext();
@@ -28,7 +29,8 @@ class ProjectProvider extends Component {
         checkoutDate: addDays(new Date(), 1),
         startingDate: new Date(),
         testArray: ["1", "2"],
-        finalBooking: []
+        finalBooking: [],
+        bookedDateArray:[]
     };
 
     //assing value to array
@@ -40,6 +42,7 @@ class ProjectProvider extends Component {
         let maxSize = Math.max(...rooms.map((item) => item.size));
         let testArray = ["1", "2"];
         let finalBooking = ["1"];
+        let bookedDateArray = [];
         //set the new state
         this.setState({
             rooms,
@@ -53,10 +56,30 @@ class ProjectProvider extends Component {
             maxSize,
             maxPrice,
             testArray,
-            finalBooking
+            finalBooking,
+            bookedDateArray
         });
 
         // console.log(testArray);
+    }
+
+    onChangeDay(day) {
+        if (day < 10) {
+           day = "0" + day.toString();
+        } 
+        return day;
+    }
+
+    onChangeMonth(month) {
+        const mlist = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
+        return mlist[month];
+    }
+
+    onChangeTotalDays(startDate, finishDate) {
+        const Difference_In_Time = finishDate.getTime() - startDate.getTime(); 
+        const Difference_In_Days = Math.ceil(Difference_In_Time / (1000 * 3600 * 24));
+        
+        return Difference_In_Days;
     }
 
     handleCheckinDateChange = (date) => {
@@ -86,6 +109,39 @@ class ProjectProvider extends Component {
         return finalBooking;
     };
 
+    //testing function to get array of booked date from backend
+    testFunction = () => {
+        axios.get(`http://localhost:5000/booking/${this.state.detailRooms.name}`)
+                .then(response => {
+                    // console.log(response.data);
+                    const test = response.data;
+                    console.log(test);
+
+                    // console.log(myTest(test));
+                    // this.getBookedDate(test);
+                    this.setState({
+                        bookedDateArray: test
+                    })
+                    
+                })
+
+                const bookedDateArray = test;            
+                
+                    return bookedDateArray;
+
+               
+    }
+
+    getBookedDate = (date) => {
+        // this.setState({
+        //     bookedDateArray: date
+        // })
+        const bookedDateArray = date;
+        console.log(bookedDateArray);
+        
+        return bookedDateArray;
+    }
+
     onSubmit = (checkinDate, checkoutDate) => {
         const test = this.state.testArray.splice(
             0,
@@ -102,6 +158,7 @@ class ProjectProvider extends Component {
         const room = tempRooms.find((room) => room.slug === true);
         return room;
     };
+    
 
     //format rooms data to get all details form data.js
     formatItem(items) {
@@ -204,7 +261,13 @@ class ProjectProvider extends Component {
                         onSubmit: this.onSubmit,
                         getBookingDetails: this.getBookingDetails,
                         finalBooking: this.state.finalBooking,
-                        testBooking: this.state.testBooking
+                        testBooking: this.state.testBooking, 
+                        onChangeDay: this.onChangeDay,
+                        onChangeMonth: this.onChangeMonth,
+                        onChangeTotalDays: this.onChangeTotalDays,
+                        getBookedDate: this.getBookedDate,
+                        bookedDateArray: this.state.bookedDateArray,
+                        testFunction: this.testFunction
                 }
             }>
              { this.props.children }  

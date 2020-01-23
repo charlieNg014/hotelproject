@@ -9,7 +9,7 @@ export default function ProjectDisplay({room}) {
     
     const {name, images, price, slug} = room;
     const context = useContext(ProjectContext);
-    const {getRoomId} = context;
+    const {getRoomId, testFunction} = context;
         return(
             <article className="room">
                 <div className="img-container">
