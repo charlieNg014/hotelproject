@@ -577,7 +577,7 @@ hr {
 }
 
 .single-room-images {
-  width: 80vw;
+  width: 90%;
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -623,7 +623,8 @@ hr {
   font-weight: 300;
   width: 160px;
   text-align: center;
-  margin-left: 50px;
+  margin-left: 100px;
+  margin-top: 20px;
 }
 
 .room-extras {
