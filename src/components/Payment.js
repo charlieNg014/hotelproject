@@ -222,12 +222,14 @@ export default function Payment({ context }) {
                         </p> */}
                         <div className="row" >
                             <div className="col-md-6" style={{marginRight: 25, marginLeft: 44, marginTop: 20}}> 
-                              <PaymentDisplay paymentDisplay = {finalBooking} bookingDisplay = {detailRooms}/>
+                            {/* <Link to ="/confirmation"> */}
+                                <PaymentDisplay paymentDisplay = {finalBooking} bookingDisplay = {detailRooms}/>
+                            {/* </Link> */}
                             </div>  
                         </div>
-                        {/* <Link to ="/confirmation">
+                        <Link to ="/confirmation">
                             <input value="Submit form" className="btn btn-primary btn-sm" />
-                        </Link> */}
+                        </Link>
                       </div>
                     </div>
                   </div>

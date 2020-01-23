@@ -17,12 +17,13 @@ export default class Navbar extends Component {
             <nav className="navbar-fluid  mr-auto">
                 <div className="nav-center">
                     <div className="nav-header active">
-                        {/* <Link to="/"> */}
+                        <Link to="/">
                             <img src={logo} alt="My navbar" />
+                        </Link>
                             <button type="button"  data-toggle="collapse" data-target=".navbar-collapse.show" style={{marginLeft: -30}} className="nav-btn" onClick={this.handleToggle}>
                                 <FaAlignRight className="nav-icon"/> 
                             </button>
-                        {/* </Link> */}
+                        
                     </div>
                     <ul className={this.state.isNavbarOpen ? "nav-links show-nav" : "nav-links"}>
                         <li style={{marginTop: -5}}>

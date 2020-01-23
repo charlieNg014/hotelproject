@@ -82,6 +82,21 @@ class ProjectProvider extends Component {
         return Difference_In_Days;
     }
 
+    getMonth(month) {
+        const mlist = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ];
+        return mlist[month];
+      }
+
+    getProperDate(date) {
+        const day = date.getDate();
+        const inputMonth = this.getMonth(date);
+        const month = this.getMonth(inputMonth);
+        const year = date.getFullYear();
+        const properDate = day + " - " + month + " - " + year;
+
+        return properDate;
+    };
+
     handleCheckinDateChange = (date) => {
         this.setState({
             checkinDate: date
@@ -267,7 +282,9 @@ class ProjectProvider extends Component {
                         onChangeTotalDays: this.onChangeTotalDays,
                         getBookedDate: this.getBookedDate,
                         bookedDateArray: this.state.bookedDateArray,
-                        testFunction: this.testFunction
+                        testFunction: this.testFunction,
+                        getMonth: this.getMonth,
+                        getProperDate: this.getProperDate
                 }
             }>
              { this.props.children }  

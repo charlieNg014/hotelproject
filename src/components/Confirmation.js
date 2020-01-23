@@ -16,7 +16,7 @@ export default function Confirmation({ paymentDetails }) {
   //get proper check-in-out date
   function getProperDate(date) {
     const day = date.getDate();
-    const inputMonth = date.getMonth();
+    const inputMonth = getMonth(date);
     const month = getMonth(inputMonth);
     const year = date.getFullYear();
     const properDate = day + " - " + month + " - " + year;
@@ -38,7 +38,7 @@ export default function Confirmation({ paymentDetails }) {
           console.log(finalBooking);
           console.log(detailRooms);
    
-          const night = onChangeTotalDays(finalBooking.checkinDate, finalBooking.checkoutDate);  
+          const night = onChangeTotalDays(finalBooking.checkinDate, finalBooking.checkoutDate); 
           return (
             <div style={{height: 800}}>
             <StyleImage>

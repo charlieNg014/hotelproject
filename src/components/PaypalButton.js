@@ -9,19 +9,12 @@ export default class MyApp extends React.Component {
     static contextType = ProjectContext;
     
     render() {
-        const flag = false;
         let {finalBooking: ppfinalBooking, detailRooms: ppdetailsRooms} = this.context;
-        // console.log(ppfinalBooking);
-        
-        
+
         const Difference_In_Time = ppfinalBooking.checkoutDate.getTime() - ppfinalBooking.checkinDate.getTime(); 
         const night = Math.ceil(Difference_In_Time / (1000 * 3600 * 24));    
 
         const paymentAPI = () => {
-            console.log("pass");
-            console.log(ppfinalBooking);
-            
-            
             axios.post("http://localhost:5000/booking/add", ppfinalBooking)
                 .then(response => console.log(response.data));
         }

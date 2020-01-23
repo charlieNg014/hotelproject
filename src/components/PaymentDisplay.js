@@ -7,13 +7,13 @@ import { ProjectConsumer } from "../context";
 import PaypalButton from "./PaypalButton";
 import {useContext} from 'react';
 import {ProjectContext} from '../context';
+import {Link} from "react-router-dom";
 
 toast.configure();
 
-export default function PaymentDisplay({ paymentDisplay, bookingDisplay, test }) {
+export default function PaymentDisplay({ paymentDisplay, bookingDisplay}) {
     // console.log(paymentDisplay);
     // console.log(bookingDisplay);
-console.log(test);
 
     const {firstname, lastname} = paymentDisplay;
     const {price, name} = bookingDisplay;
@@ -62,8 +62,8 @@ console.log(test);
 
       //set delay for 6 seconds before redirect
       setTimeout(function () {
-        window.location.href = "/"; 
-     }, 8000); 
+        window.location = "/"; 
+     }, 6000); 
 
     } else {
       toast("Something went wrong", {
@@ -74,7 +74,7 @@ console.log(test);
 
       //set delay for 6 seconds before redirect
       setTimeout(function () {
-        window.location.href = "/"; 
+        window.location = "/"; 
      }, 8000); 
     }
   }
@@ -94,17 +94,15 @@ console.log(test);
             <>
                 <div className="row">
                 <div className="col-md-6" style={{width: 150, marginBottom: 20, marginRight: 40}} > 
-                    {/* <Link to="/confirmation"> */}
-                    <StripeCheckout
-                        stripeKey="pk_test_ivwpgGyuTBJ0DLTExykuQwmN00p6kAAxKf"
-                        token={handleToken}
-                        billingAddress
-                        shippingAddress
-                        name="Payment"
-                        amount={detailRooms.price * night * 1.1 * 100}
-                        style={{width: 150}}
-                    />
-                    {/* </Link> */}
+                      <StripeCheckout
+                          stripeKey="pk_test_ivwpgGyuTBJ0DLTExykuQwmN00p6kAAxKf"
+                          token={handleToken}
+                          billingAddress
+                          shippingAddress
+                          name="Payment"
+                          amount={detailRooms.price * night * 1.1 * 100}
+                          style={{width: 150}}
+                      />
                 </div>
                     <div className="col-md-6">
                         <PaypalButton /> 
