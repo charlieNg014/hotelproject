@@ -225,9 +225,9 @@ export default function Payment({ context }) {
                               <PaymentDisplay paymentDisplay = {finalBooking} bookingDisplay = {detailRooms}/>
                             </div>  
                         </div>
-                        <Link to ="/confirmation">
+                        {/* <Link to ="/confirmation">
                             <input value="Submit form" className="btn btn-primary btn-sm" />
-                        </Link>
+                        </Link> */}
                       </div>
                     </div>
                   </div>
