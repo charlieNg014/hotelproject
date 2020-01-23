@@ -8,7 +8,17 @@ import {ProjectContext} from "../context";
 export default class BookingDetails extends Component {
 
     static contextType = ProjectContext;
-    
+
+    getUniqueCode(length) {
+        var result           = '';
+        var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        var charactersLength = characters.length;
+        for ( var i = 0; i < length; i++ ) {
+           result += (characters.charAt(Math.floor(Math.random() * charactersLength))).toUpperCase();
+        }
+        return result;
+     }
+
 
     //declare the state
     constructor(props) {
@@ -51,23 +61,15 @@ export default class BookingDetails extends Component {
             seaview: "off",
             satellite: "off",
             laundry: "off", 
-            testBooking: []
+            referenceCode: this.getUniqueCode(6)
         }
     }
 
     //
     componentDidMount() {
-        //getting all users and then display
-        // axios.get("http://localhost:5000/findroom/2")
-        // .then(response => {
-        //     if (response.data.length > 0) {
-        //         this.setState({
-        //             checkinDate: response.data[0].checkin,
-        //             checkoutDate: response.data[0].checkout,
-        //             roomname: response.data[0].roomName
-        //         })
-        //     }
-        // })
+        this.setState({
+            referenceCode: this.getUniqueCode(6)
+        })
         
     }
 
@@ -213,7 +215,8 @@ export default class BookingDetails extends Component {
             car: this.state.car,
             seaview: this.state.seaview,
             satelite: this.state.satellite,
-            laundry: this.state.laundry
+            laundry: this.state.laundry,
+            referenceCode: this.state.referenceCode
         }
     
         // console.log(booking);
@@ -223,20 +226,6 @@ export default class BookingDetails extends Component {
         
         return booking;
     }
-
-
-   
-
-    // lastSubmit(booking) {
-    //     // booking.preventDefault();
-        
-    //     console.log(booking);
-        
-    //     // axios.post("http://localhost:5000/booking/add", booking)
-    //     //     .then(response => console.log(response.data))
-
-    // }
-
 
     render() {
 

@@ -19,7 +19,8 @@ const bookingdetailsSchema = new Schema({
     car: {type: String},
     seaview: {type: String},
     satellite: {type: String},
-    laundry: {type: String}
+    laundry: {type: String},
+    referenceCode: {type: String}
 })
 
 const BookingDetails = mongoose.model("BookingDetails", bookingdetailsSchema);

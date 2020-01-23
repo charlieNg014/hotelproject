@@ -15,48 +15,6 @@ toast.configure();
 
 export default function Payment({ context }) {
 
-  // const [testingProduct] = React.useState({
-  //   name: "charlie",
-  //   price: 300,
-  //   description: "testing",
-  //   number: 3
-  // });
-
-  // async function handleToken(token) {
-  //   // console.log(token);
-  //   // console.log(booking);
-    
-  //   const response = await axios.post(
-  //     "http://localhost:5000/payment/card/checkout",
-  //     {
-  //       token,
-  //       testingProduct
-  //     }
-  //   );
-
-   
-
-  //   const { status } = response.data;
-  //   if (status === "success") {
-  //     toast("Successful. Please check your email for the details!", {
-  //       type: "Success",
-  //       className:'foo-bar'
-  //     });
-
-  //     // axios.post("http://localhost:5000/booking/add", booking)
-  //     // .then(response => console.log(response.data))
-
-  //     //set the screen to confirmation page
-  //     window.location = "/";
-
-  //   } else {
-  //     toast("Something went wrong", {
-  //       type: "error",
-  //       className:"foo-bar"
-  //     });
-  //   }
-  // }
-
   //get the month properly
   function getMonth(month) {
     const mlist = [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" ];
@@ -267,6 +225,9 @@ export default function Payment({ context }) {
                               <PaymentDisplay paymentDisplay = {finalBooking} bookingDisplay = {detailRooms}/>
                             </div>  
                         </div>
+                        <Link to ="/confirmation">
+                            <input value="Submit form" className="btn btn-primary btn-sm" />
+                        </Link>
                       </div>
                     </div>
                   </div>

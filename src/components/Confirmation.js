@@ -44,7 +44,7 @@ export default function Confirmation({ paymentDetails }) {
             <StyleImage>
               <Banner
                 title="Thank you, your booking is completed"
-                subtitle="Confirmation number: 2153134"
+                subtitle={`Confirmation code: ` + finalBooking.referenceCode} 
               ></Banner>
             </StyleImage>
 

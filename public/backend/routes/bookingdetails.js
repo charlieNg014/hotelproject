@@ -1,6 +1,19 @@
 const router = require('express').Router();
 const BookingDetails = require("../models/bookingdetails.model");
 
+function getUniqueCode(length) {
+    var result           = '';
+    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    var charactersLength = characters.length;
+    for ( var i = 0; i < length; i++ ) {
+       result += (characters.charAt(Math.floor(Math.random() * charactersLength))).toUpperCase();
+    }
+    return result;
+ }
+ 
+ //testing 
+//  console.log(getUniqueCode(6));
+
 //get method
 router.get("/", function(req, res) {
     BookingDetails.find()
@@ -28,6 +41,7 @@ router.post("/add", function(req, res) {
     const seaview = req.body.seaview;
     const satellite = req.body.satellite;
     const laundry = req.body.laundry;
+    const referenceCode = req.body.referenceCode;
 
     const newBooking = new BookingDetails({
         firstname, 
@@ -47,7 +61,8 @@ router.post("/add", function(req, res) {
         car,
         seaview,
         satellite,
-        laundry
+        laundry,
+        referenceCode
     })
 
     newBooking.save()
