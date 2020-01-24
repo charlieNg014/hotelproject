@@ -907,6 +907,23 @@ hr {
   margin-left: -70px;
 }
 
+.room-intro-title {
+  margin-top: 30px;
+  text-align: center;
+  width: 356px;
+}
+
+.room-des {
+  width: 395px;
+}
+
+@media only screen and (max-width: 400px) {
+  .room-intro-title {
+    text-align: center;
+    font-size: 35px;
+    font-weight: 500px;
+  }
+}
 /* end of booking  */
 
 /* payment  */

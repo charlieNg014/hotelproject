@@ -109,7 +109,9 @@ const test = [];
                                     <h3 className="room-intro-title">
                                         Availability 
                                     </h3>
-                                    <DateDisplay result = {bookedDateArray}/>   
+                                    <div style={{textAlign: "center"}}>
+                                        <DateDisplay result = {bookedDateArray}/>   
+                                    </div>
                                     <div style={{marginTop: 46}}>
                                         <Link  to="/booking/add">
                                             <input 
