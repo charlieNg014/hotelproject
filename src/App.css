@@ -923,6 +923,11 @@ hr {
     font-size: 35px;
     font-weight: 500px;
   }
+
+  .desc {
+    margin-left: -20px;
+    
+  }
 }
 /* end of booking  */
 
