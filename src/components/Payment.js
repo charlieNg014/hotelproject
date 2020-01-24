@@ -10,6 +10,7 @@ import { ProjectConsumer } from "../context";
 import PaypalButton from "./PaypalButton";
 import PaymentDisplay from "./PaymentDisplay";
 import DateDisplay from "./DateDisplay";
+import SiteFooter from "../Pages/SiteFooter";
 
 toast.configure();
 
@@ -239,6 +240,7 @@ export default function Payment({ context }) {
           );
         }}
       </ProjectConsumer>
+      <SiteFooter />
     </>
   );
 }

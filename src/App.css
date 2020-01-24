@@ -906,3 +906,33 @@ hr {
   background-color: lightseagreen;
   margin-left: 20px;
 }
+
+/* Site Footer  */
+
+.sf-main {
+  text-align: left;
+}
+
+.sf-title {
+  color: white;
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.sf-subtitle {
+  color: black;
+  font-size: 12px;
+  margin-bottom: 20px;
+}
+
+.sf-info {
+  font-size: 25px;
+  margin-right: 20px;
+}
+
+.sf-social {
+  margin-right: 20px;
+  color: black;
+}
+
+/* End Site Footer  */

@@ -10,6 +10,7 @@ import RoomDetails from "./components/RoomDetails";
 import BookingDetails from "./components/BookingDetails";
 import Payment from "./components/Payment";
 import Confirmation from "./components/Confirmation";
+import SiteFooter from "./Pages/SiteFooter";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route exact path="/booking/add" component={BookingDetails} />
         <Route exact path="/payment" component={Payment} />
         <Route exact path="/confirmation" component={Confirmation} />
+        <Route exact path="/sitefooter" component={SiteFooter} />
       </Switch>
     </>
   );

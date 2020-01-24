@@ -4,6 +4,7 @@ import StyleImage from "./StyleImage";
 import Banner from "./Banner";
 import { Link } from 'react-router-dom';
 import {ProjectContext} from "../context";
+import SiteFooter from "../Pages/SiteFooter";
 
 export default class BookingDetails extends Component {
 
@@ -274,6 +275,7 @@ export default class BookingDetails extends Component {
         
     
         return (
+            <>
             <div>
             <div>
                 <StyleImage>
@@ -486,6 +488,8 @@ export default class BookingDetails extends Component {
                 </div>
             </div>
         </div>
+        <SiteFooter />
+        </>
         )
     }
 }

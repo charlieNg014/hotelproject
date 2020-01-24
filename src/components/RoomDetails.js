@@ -9,6 +9,7 @@ import axios from "axios"
 import addDays from 'date-fns/addDays'
 import DateDisplay from "./DateDisplay";
 import PaymentDisplay from './PaymentDisplay';
+import SiteFooter from "../Pages/SiteFooter";
 
 export default function RoomDetails({context}) {
 const test = [];
@@ -133,6 +134,7 @@ const test = [];
                             })}
                         </ul>
                     </section> 
+                    <SiteFooter />
                     </>
                 )
             }}

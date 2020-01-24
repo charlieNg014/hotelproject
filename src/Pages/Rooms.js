@@ -4,6 +4,7 @@ import Banner from '../components/Banner';
 import { Link } from 'react-router-dom';
 import RoomContainer from '../components/RoomContainer';
 import roomdisplay from '../images/room-2.jpeg';
+import SiteFooter from './SiteFooter';
 
 export default class Rooms extends Component {
     render() {
@@ -15,6 +16,7 @@ export default class Rooms extends Component {
                 </Banner>
             </StyleImage>
             <RoomContainer />
+            <SiteFooter />
             </>
         )
     }
