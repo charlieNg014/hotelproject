@@ -69,16 +69,17 @@ const test = [];
                             
                                 {/* description */}
                                 <article className="desc col-md-4">
-                                    <h3 style={{width: 300, marginLeft: 28}}>{detailRooms.description}</h3> 
+                                    <h3 className="room-intro-title">Intro</h3>
+                                    <h3 className="room-des">{detailRooms.description}</h3> 
                                 </article>
                                 {/* details */}
                                 <article className="info col-md-4" >
-                                    <h3>Infomation</h3>
-                                    <h6>Price: AUD ${detailRooms.price}</h6>
-                                    <h6>Size: {detailRooms.size}m2</h6>
-                                    <h6>Guest: {detailRooms.capacity > 1 ? `${detailRooms.capacity} people`: `${detailRooms.capacity} person`}</h6>
-                                    <h6>{detailRooms.pets? "pets allowed": "no pets allowed"}</h6>
-                                    <h6>{detailRooms.breakfast && "free breakfast"}</h6> 
+                                    <h3 className="room-intro-title">Infomation</h3>
+                                    <h6 className="room-des">Price: AUD ${detailRooms.price}</h6>
+                                    <h6 className="room-des">Size: {detailRooms.size}m2</h6>
+                                    <h6 className="room-des">Guest: {detailRooms.capacity > 1 ? `${detailRooms.capacity} people`: `${detailRooms.capacity} person`}</h6>
+                                    <h6 className="room-des">{detailRooms.pets? "pets allowed": "no pets allowed"}</h6>
+                                    <h6 className="room-des">{detailRooms.breakfast && "free breakfast"}</h6> 
                                 </article>
                                 {/* description */}
                                 <article className="desc col-md-4">
@@ -105,7 +106,10 @@ const test = [];
                                     </div> */}
                                     
                                     {/* Problems still here. Need to be fixed  */}
-                                    <DateDisplay result = {bookedDateArray}/>
+                                    <h3 className="room-intro-title">
+                                        Availability 
+                                    </h3>
+                                    <DateDisplay result = {bookedDateArray}/>   
                                     <div style={{marginTop: 46}}>
                                         <Link  to="/booking/add">
                                             <input 
