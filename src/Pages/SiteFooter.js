@@ -57,8 +57,8 @@ export default  class SiteFooter extends Component {
     render(){
         return(
             <>
-            <section className="services" style={{backgroundColor:'lightgrey', marginTop: 0, height: 248}}>
-                <div className="services-center">
+            <section className="services sf" style={{backgroundColor:'lightgrey'}}>
+                <div className="services-center" style={{marginTop: -40}}>
                     <section style={{textTransform:"uppercase", fontWeight:"bold"}}>
                         {/* <h6 className="contact-info">Please leave your email below. I will contact with you shortly.</h6>
                         <form action="/" style={{marginBottom:40}}>

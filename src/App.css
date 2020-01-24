@@ -175,6 +175,14 @@ h6 {
 }
 
 @media screen and (min-width: 768px) {
+  .navbar-fluid {
+    background-color: ivory;
+    margin-top: -8px;
+  }
+
+  .nav-header {
+    margin-top: 35px;
+  }
   .nav-btn {
       display: none;
   }
@@ -186,7 +194,7 @@ h6 {
   }
   .nav-links {
       height: auto;
-      display: flex;
+      /* display: flex; */
       margin-left: 120px;
   }
   .nav-links a {
@@ -839,7 +847,7 @@ hr {
 }
 
 .summary-box {
-  height: 1170px;
+  /* height: 1170px; */
   background-color: lightgrey;
 }
 
@@ -899,6 +907,17 @@ hr {
   margin-left: -70px;
 }
 
+/* end of booking  */
+
+/* payment  */
+
+.payment {
+  height: 765px;
+  margin-top: 40px;
+}
+
+/* end of payment  */
+
 /* toastify  */
 .foo-bar {
   width: 80%;
@@ -908,7 +927,9 @@ hr {
 }
 
 /* Site Footer  */
-
+.sf {
+  height: 208px;
+}
 .sf-main {
   text-align: left;
 }
@@ -935,4 +956,31 @@ hr {
   color: black;
 }
 
+@media only screen and (max-width: 400px) {
+  .sf {
+    height: 522px;
+  }
+  
+  .sf-main {
+    text-align: center;
+    margin-top: 15px;
+  }
+}
+
 /* End Site Footer  */
+
+/* Footer  */
+
+.footer-ser {
+  height: 240px;
+  background-color: darkgray;
+}
+
+@media only screen and (max-width: 400px) {
+  .footer-ser {
+    background: darkgray;
+    height: 300px;
+  }
+}
+
+/* End Footer  */

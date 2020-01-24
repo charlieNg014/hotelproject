@@ -55,8 +55,8 @@ export default  class Footer extends Component {
     render(){
         return(
             <>
-            <section className="services" style={{backgroundColor:'lightgrey', marginTop:-60}}>
-                <div className="services-center">
+            <section className="services footer-ser">
+                <div className="services-center" style={{marginTop: -25}}>
                     <section style={{textTransform:"uppercase", fontWeight:"bold"}}>
                     <h6 className="contact-info">Please leave your email below. I will contact with you shortly.</h6>
                     <form action="/" style={{marginBottom:40}}>

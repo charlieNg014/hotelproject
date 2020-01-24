@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {useContext} from 'react';
 import {ProjectContext} from '../context';
+import SiteFooter from '../Pages/SiteFooter';
 
 export default function ProjectDisplay({room}) {
     //declare items
@@ -11,6 +12,7 @@ export default function ProjectDisplay({room}) {
     const context = useContext(ProjectContext);
     const {getRoomId, testFunction} = context;
         return(
+            <>
             <article className="room">
                 <div className="img-container">
                     <img src={images[0]} alt="displayimage"/>
@@ -24,6 +26,7 @@ export default function ProjectDisplay({room}) {
                     <p className="room-info">{name}</p>
                 </div>
             </article>
+            </>
         )
 }
 

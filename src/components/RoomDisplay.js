@@ -1,5 +1,6 @@
 import React from 'react';
 import ProjectDisplay from './ProjectDisplay';
+import SiteFooter from "../Pages/SiteFooter";
 
 export default function RoomDisplay({rooms}) {
         if (rooms.length === 0) {

@@ -276,8 +276,6 @@ export default class BookingDetails extends Component {
     
         return (
             <>
-            <div>
-            <div>
                 <StyleImage>
                     <Banner title="Booking" subtitle={details.name}>
                         <Link to="/rooms" className="btn-primary">
@@ -285,9 +283,8 @@ export default class BookingDetails extends Component {
                         </Link>
                     </Banner>
                 </StyleImage>
-            </div>
-            <div>
-                <div className="container container-fluid" style={{marginTop:20, height: 1100}}>
+
+                <section className="container container-fluid" style={{marginTop:20, height: 1100}}>
                     <div className="row" style={{height: 1000}}>
                         <div className="col-md-4">
                             {/* {bookingDate} */}
@@ -485,10 +482,9 @@ export default class BookingDetails extends Component {
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-        <SiteFooter />
+                </section>
+
+                {/* <SiteFooter /> */}
         </>
         )
     }

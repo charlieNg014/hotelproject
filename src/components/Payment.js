@@ -53,6 +53,7 @@ export default function Payment({ context }) {
 
           return (
             <>
+            <section>
               <StyleImage>
                 <Banner title="Booking Summary" subtitle="One last step ... ">
                   <Link to="/" className="btn-primary">
@@ -60,12 +61,10 @@ export default function Payment({ context }) {
                   </Link>
                 </Banner>
               </StyleImage>
+            <div className="payment">
               <div className="container container-fluid summary-box">
-                <div
-                  className="container container-fluid"
-                  style={{ marginTop: 20, height: 1170 }}
-                >
-                  <div className="row" style={{ height: 1000 }}>
+                <div className="container container-fluid">
+                  <div className="row">
                     <div className="col-md-6">
                       <div className="container-fluid">
                         <p className="booking-title"> Booking Summary: </p>
@@ -228,19 +227,22 @@ export default function Payment({ context }) {
                             {/* </Link> */}
                             </div>  
                         </div>
-                        <Link to ="/confirmation">
+                        {/* <Link to ="/confirmation">
                             <input value="Submit form" className="btn btn-primary btn-sm" />
-                        </Link>
+                        </Link> */}
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
+            </div>
+           
+            </section>
+             {/* <SiteFooter /> */}
             </>
           );
         }}
       </ProjectConsumer>
-      <SiteFooter />
     </>
   );
 }
