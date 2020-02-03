@@ -65,7 +65,7 @@ const test = [];
                             })}
                         </div>
 
-                        <div className="single-room-images row " style={{marginLeft: 20, textAlign:"center"}}>
+                        <div className="single-room-images" style={{textAlign:"center"}}>
                             
                                 {/* description */}
                                 <article className="desc col-md-4">
