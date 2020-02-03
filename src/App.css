@@ -915,7 +915,19 @@ hr {
 
 .room-des {
   width: 395px;
+  text-align: center;
+  margin: 30px;
 }
+
+@media only screen and (max-width: 400px) {
+  .room-des {
+    width: 100%;
+    text-align: center;
+    margin: 30px;
+  }
+}
+
+
 
 @media only screen and (max-width: 400px) {
   .room-intro-title {
